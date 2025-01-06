@@ -2074,5 +2074,31 @@ Konstruiere ein Dreieck, wobei \(\overline{AB}\) mit \(a\) und \(\overline{AC}\)
 Sei \(\Pi\) eine Hilbertebene mit \((P)\) und \(\mathbb{K}\) der geordnete Körper aus Definition~\ref{def:körper_s_pi}. Nach Korollar~\ref{cor:k_pyth} ist \(\mathbb{K}\) pythagoreisch. Dann ist \(\Pi\) isomorph zur kartesischen Ebene \(\mathbb{K}^2\) über \(\mathbb{K}\).
 \end{theorem}
 
+\subsection{Hyperbolische Ebene}
+Wir geben ein Modell für die hyperbolische Ebene an und zeigen damit, dass eine Hilbertebene existiert, welche das Parallelaxiom nicht erfüllt.
+
+\begin{definition}[Hyperbolische Ebene]
+Die hyperbolische Ebene ist die wie folgt definierte Geometrie \((\mathbb{H}, \Gamma_\mathbb{H})\): Die Menge der Punkte ist die der Halbebene
+\[
+\mathbb{H} := \{ z = x + iy \in \mathbb{C} : \text{Im}(z) > 0 \}.
+\]
+Die Menge \(\Gamma_\mathbb{H}\) der \(h\)-Geraden ist definiert durch
+\[
+z \in g \in \Gamma_\mathbb{H} \iff \text{Es existieren } \alpha, \beta, \gamma \in \mathbb{R} \text{ mit } (\alpha, \beta) = (0, 0) \text{ und } \beta^2 - \alpha \gamma > 0,
+\]
+sodass
+\[
+\alpha z \bar{z} + \beta (z + \bar{z}) + \gamma = 0.
+\]
+Man rechnet nach, dass \(h\)-Geraden in zwei Typen kommen und umgekehrt jede Menge dieser Form eine \(h\)-Gerade ist. 
+
+\textbf{Typ 1:} (\(\alpha = 0\)) Die Gerade \(g\) ist ein Strahl, der senkrecht zur \(x\)-Achse ist, da \(2\beta x = -\gamma\).
+
+\textbf{Typ 2:} (\(\alpha \neq 0\)) Die Gerade \(g\) ist ein Halbkreis mit Mittelpunkt \(x_0 = -\frac{\beta}{\alpha} \in \mathbb{R}\), \(y_0 = 0\) und Radius
+\[
+r = \frac{\beta^2 - \alpha \gamma}{\alpha^2}.
+\]
+\end{definition}
+
 
 \end{document}
