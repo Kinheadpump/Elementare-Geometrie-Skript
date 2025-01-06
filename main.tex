@@ -1905,4 +1905,24 @@ Wir sagen, dass die Strecken mit Längen \(a, b, c, d \in \mathbb{K}\) \textbf{p
 \frac{a}{b} = \frac{c}{d} \quad \text{in } \mathbb{K}.
 \]
 
+\begin{proposition}[Umkreis]
+Es sei \(\triangle ABC\) ein Dreieck in einer Hilbertebene mit \((P)\). Dann existiert ein eindeutiger Punkt \(I \in \Pi\) mit \(AI \cong BI \cong CI\).
+
+\begin{proof}
+Konstruiere zu \(AB\) und \(AC\) jeweils die Mittelsenkrechte, das heißt, die Mittelpunkte \(M_{AB}\), \(M_{AC}\) und errichte darauf die Senkrechten zu \(AB\) und \(AC\), bezeichne diese mit \(l\) und \(m\). Wir behaupten \(l \nparallel m\).
+
+Sei \(I\) der Schnittpunkt von \(l\) und \(m\). Es gilt \(l \perp AB\) und \(m \perp AC\), was bedeutet, dass \(AB \parallel AC\). Denn \(AB\) ist das eindeutige Lot auf \(l\) durch \(A\). Außerdem gilt \(AB \cap m \neq \emptyset\), sonst wäre \(AB \parallel m\) und \(l \parallel m \implies AB \parallel l\). Widerspruch.
+
+Bezeichne mit \(I\) den eindeutigen Schnittpunkt zwischen \(l\) und \(m\).
+
+\textbf{Behauptung:} Ein Punkt \(P\) liegt genau dann auf der Mittelsenkrechten \(M_{AB}\), wenn \(AP \cong BP\).
+
+\textbf{Rückrichtung:} Gilt \(AP \cong BP\), so folgt die Behauptung aus dem \textit{SSS}-Kriterium, da \(AM \cong MB\) nach Voraussetzung und \(\triangle AMP \cong \triangle BMP\) die Seite \(MP\) gemeinsam haben.
+
+\textbf{Hinrichtung:} Die Behauptung folgt aus dem \textit{SWS}-Kriterium, da \(\angle AMP \cong \angle BMP\) ein rechter Winkel ist.
+
+Aus der Behauptung folgt \(IA \cong IB \cong IC\) sowie die Eindeutigkeit von \(I\).
+\end{proof}
+\end{proposition}
+
 \end{document}
