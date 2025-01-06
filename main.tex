@@ -1866,7 +1866,7 @@ In der Definition der Multiplikation ist \(X = B\) (wegen der Eindeutigkeit aus 
 \]
 \end{proof}
 
-\begin{definition}[Der Körper \(\overline{S(\Pi)}\)]
+\begin{definition}[Der Körper \(\overline{S(\Pi)}\)]\label{def:körper_s_pi}
 Definiere \(\overline{S(\Pi)} := (S(\Pi) \times S(\Pi)) / \sim\), wobei die Äquivalenzrelation \(\sim\) wie folgt definiert ist:
 \[
 (a, b) \sim (a', b') \iff a + b = a' + b',
@@ -1905,7 +1905,7 @@ Wir sagen, dass die Strecken mit Längen \(a, b, c, d \in \mathbb{K}\) \textbf{p
 \frac{a}{b} = \frac{c}{d} \quad \text{in } \mathbb{K}.
 \]
 
-\begin{proposition}[Umkreis]
+\begin{proposition}[Umkreis]\label{prop:umkreis}
 Es sei \(\triangle ABC\) ein Dreieck in einer Hilbertebene mit \((P)\). Dann existiert ein eindeutiger Punkt \(I \in \Pi\) mit \(AI \cong BI \cong CI\).
 
 \begin{proof}
@@ -1924,5 +1924,155 @@ Bezeichne mit \(I\) den eindeutigen Schnittpunkt zwischen \(l\) und \(m\).
 Aus der Behauptung folgt \(IA \cong IB \cong IC\) sowie die Eindeutigkeit von \(I\).
 \end{proof}
 \end{proposition}
+
+\begin{theorem}[Zentriwinkelsatz]\label{theorem:zentriwinkelsatz}
+Sei \(\triangle ABC\) ein Dreieck in einer Hilbertebene mit \((P)\), \(I\) ein eindeutiger Punkt wie zuvor und \(\overrightarrow{\rm IE}\) die Winkelhalbierende von \(\angle BIC\). Dann gilt:
+
+1) Falls \(E\) auf der entgegengesetzten Seite von \(A\) bezüglich \(BC\) liegt, dann gilt
+\[
+\angle BIE \cong_w \angle BAC.
+\]
+
+2) Falls \(E\) auf der gleichen Seite von \(A\) bezüglich \(BC\) liegt, konstruiere \(E'\) auf der anderen Seite von \(BC\), dann gilt
+\[
+\angle BIE' \cong_w \angle BAC.
+\]
+
+\begin{proof}
+Wegen \(AI \cong BI\) folgt \(\angle IAB \cong_w \angle IBA\). Ebenso gilt \(\angle IAC \cong_w \angle ICA\).
+
+Betrachte die Gerade \(AI\) und \(A'\) auf der anderen Seite von \(I\). Dann existieren nach dem Innenwinkelsummensatz die Punkte \(D\) und \(D'\), sodass
+\[
+\angle BID \cong_w \angle BIA' \cong_w \angle IAB \quad \text{und} \quad \angle CID' \cong_w \angle CIA' \cong_w \angle IAC.
+\]
+Aus der Subtraktion der Winkel folgt nun die Behauptung.
+
+Punkt 2) folgt analog zu Punkt 1).
+\end{proof}
+\end{theorem}
+
+\begin{corollary}[Peripheriewinkelsatz]\label{cor:peripheriewinkelsatz}
+In einer Hilbertebene mit \((P)\) seien die Punkte \(A\), \(B\), \(C\), \(D\), \(I \in \Pi\) gegeben mit \(AI \cong BI \cong CI \cong DI\). Dann gilt
+\[
+\angle CAD \cong_w \angle CBD.
+\]
+
+\begin{proof}
+Konstruiere wie in Satz~\ref{theorem:zentriwinkelsatz} die Winkelhalbierenden. Dann gilt
+\[
+\angle CAD \cong_w \angle BIE \cong_w \angle CBD.
+\]
+\end{proof}
+\end{corollary}
+
+\begin{corollary}[Eingeschriebenes Viereck]
+In einer Hilbertebene mit \((P)\) seien \(A\), \(B\), \(C\), \(D \in \Pi\) gegeben. Dann existiert ein \(I \in \Pi\) mit \(AI \cong BI \cong CI \cong DI\) genau dann, wenn
+\[
+\angle CAD \cong_w \angle CBD.
+\]
+
+\begin{proof}
+Die Hinrichtung wird durch Korollar~\ref{cor:peripheriewinkelsatz} gezeigt. Die andere Implikation folgt wie folgt: Nach Proposition~\ref{prop:umkreis} existiert ein \(I \in \Pi\) mit \(AI \cong CI \cong DI\). Wir wollen nun \(AI \cong BI\) folgern. Angenommen, \(AI < BI\). Finde \(B'\) auf \(BI\) auf der gleichen Seite wie \(B\), sodass \(B'I \cong AI\). Nach Korollar~\ref{cor:peripheriewinkelsatz} gilt
+\[
+\angle CB'D \cong_w \angle CAD \cong_w \angle CBD,
+\]
+was im Widerspruch zum Außenwinkelsatz steht.
+\end{proof}
+\end{corollary}
+
+\begin{definition}[Ähnliche Dreiecke]
+In einer Hilbertebene mit \((P)\) heißen zwei Dreiecke \(\triangle ABC\) und \(\triangle A'B'C'\) ähnlich, falls die drei korrespondierenden Winkel kongruent und die korrespondierenden Seiten proportional sind, das heißt
+\[
+\frac{a}{a'} = \frac{b}{b'} = \frac{c}{c'}.
+\]
+\end{definition}
+
+\begin{lemma}[Inkreis]
+Sei \(\Pi\) eine Hilbertebene mit \((P)\) und \(\triangle ABC\) ein Dreieck. Dann gilt:
+
+1) Die Winkelhalbierenden von \(\triangle ABC\) treffen sich in einem Punkt \(I\).
+
+2) Es bezeichne jeweils \(F\), \(E\), \(D\) die Lote von \(I\) auf \(AB\), \(AC\), \(BC\). Dann gilt
+\[
+FI \cong EI \cong DI.
+\]
+\end{lemma}
+
+\begin{proposition}[WWW für Ähnlichkeit]\label{prop:www_ähnlich}
+Falls für zwei Dreiecke die korrespondierenden Winkel kongruent sind, so sind die Dreiecke ähnlich.
+\begin{proof}
+Zeichne die Winkelhalbierenden der Dreiecke ein und bezeichne mit \(I\) ihren Schnittpunkt. Führe die Lote von \(I\) auf die drei Seiten, dann erhalten wir drei kongruente Segmente \(h\) und Schnittpunkte \(D\), \(E\), \(F\). Nach dem Satz von der Winkelhalbierenden (SWW) sind
+\[
+\triangle AFI \cong \triangle AEI, \quad \triangle CIE \cong \triangle CDI, \quad \triangle BDI \cong \triangle BIF.
+\]
+Insbesondere gilt:
+\[
+AE \cong AF =: x, \quad BD \cong BF =: y, \quad CD \cong CE =: z.
+\]
+
+Analog gilt dies für \(\triangle A'B'C'\). Sei \(\alpha\) der halbe Winkel in \(A\) und zeichne ihn ein. Dann folgt:
+\[
+h = r \cdot x \quad \text{nach Definition der Multiplikation}.
+\]
+Ebenso in \(\triangle A'B'C'\) gilt \(h' = r \cdot x'\), daher
+\[
+\frac{h}{h'} = \frac{x}{x'}.
+\]
+Ebenso für alle anderen Dreiecke gilt:
+\[
+\frac{y}{y'} = \frac{h}{h'} = \frac{z}{z'} =: k.
+\]
+Daraus folgt:
+\[
+x = k \cdot x', \quad y = k \cdot y', \quad z = k \cdot z'.
+\]
+Nun gilt:
+\[
+a = y + z \quad \text{und} \quad a' = y' + z' \quad \Rightarrow \quad a = k \cdot a'.
+\]
+Ebenso gilt:
+\[
+b = k \cdot b' \quad \text{und} \quad c = k \cdot c'.
+\]
+\end{proof}
+\end{proposition}
+
+\begin{proposition}[Pythagoras]
+In einer Hilbertebene mit \((P)\) sei \(\triangle ABC\) ein rechtwinkliges Dreieck mit Hypotenuse \(c\) und Seiten \(a, b\). Dann gilt im assoziierten Körper \(\mathbb{K}\):
+\[
+a^2 + b^2 = c^2.
+\]
+
+\begin{proof}
+Führe das Lot von der Ecke des rechten Winkels auf die gegenüberliegende Seite. Nenne den Fußpunkt \(D\). Das Dreieck \(\triangle ABC\) ist nach Proposition~\ref{prop:www_ähnlich} ähnlich zu \(\triangle BDC\), da \(\triangle ADC\) und \(\triangle BDC\) jeweils ähnlich zu \(\triangle ABC\) sind. Zwei Winkel stimmen überein, der letzte ergibt sich durch Proposition~\ref{prop:innenwinkelsumme} und die Differenz von Winkeln. 
+
+Sei \(x\) die Strecke, die mit der Strecke \(\overline{AD}\) in \(\mathbb{K}\) korrespondiert. Es gilt:
+\[
+\frac{x}{a} = \frac{a}{c} \quad \text{und} \quad \frac{c-x}{b} = \frac{b}{c}.
+\]
+Aus diesen beiden Gleichungen folgt:
+\[
+cx = a^2 \quad \text{und} \quad c^2 - cx = b^2.
+\]
+Daraus ergibt sich:
+\[
+a^2 + b^2 = c^2.
+\]
+\end{proof}
+\end{proposition}
+
+\begin{corollary}[\(\mathbb{K}\) ist pythagoreisch]\label{cor:k_pyth}
+In einer Hilbertebene mit \((P)\) ist \(\mathbb{K}\) pythagoreisch.
+\begin{proof}
+Sei \(a \in \mathbb{K}\). Falls \(a = 0\), ist nichts zu zeigen. Falls \(a < 0\), gehe zu \(-a\) über. Es gilt also \(a > 0\), was bedeutet, dass \(a\) durch ein Segment repräsentiert wird.
+
+Konstruiere ein Dreieck, wobei \(\overline{AB}\) mit \(a\) und \(\overline{AC}\) mit 1 korrespondiert. Dann repräsentiert \(\overline{BC}\) den Wert \(\sqrt{1 + a^2}\).
+\end{proof}
+\end{corollary}
+
+\begin{theorem}[Korrespondenz Körper Hilbertebene]
+Sei \(\Pi\) eine Hilbertebene mit \((P)\) und \(\mathbb{K}\) der geordnete Körper aus Definition~\ref{def:körper_s_pi}. Nach Korollar~\ref{cor:k_pyth} ist \(\mathbb{K}\) pythagoreisch. Dann ist \(\Pi\) isomorph zur kartesischen Ebene \(\mathbb{K}^2\) über \(\mathbb{K}\).
+\end{theorem}
+
 
 \end{document}
