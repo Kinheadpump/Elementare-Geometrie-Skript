@@ -1417,7 +1417,7 @@ Es sei eine Hilbertebene mit (P) gegeben und \(\triangle ABC\) ein Dreieck. Sei 
 \begin{theorem}[Thales]
 In einer Hilbertebene mit (P) sei \(\triangle ABC\) ein gegebenes Dreieck, und sei \(M \in \overline{AB}\) der Mittelpunkt von \(\overline{AB}\), sodass:
 \[
-\overline{AM} \cong \overline{MB} \quad \text{und} \quad \overline{MC} \cong \overline{MC}.
+\overline{AM} \cong \overline{MB} \cong \overline{MC}.
 \]
 Dann ist \(\angle BCA\) ein rechter Winkel.
 \end{theorem}
@@ -2084,7 +2084,7 @@ Die hyperbolische Ebene ist die wie folgt definierte Geometrie \((\mathbb{H}, \G
 \]
 Die Menge \(\Gamma_\mathbb{H}\) der \(h\)-Geraden ist definiert durch
 \[
-z \in g \in \Gamma_\mathbb{H} \iff \text{Es existieren } \alpha, \beta, \gamma \in \mathbb{R} \text{ mit } (\alpha, \beta) = (0, 0) \text{ und } \beta^2 - \alpha \gamma > 0,
+z \in g \in \Gamma_\mathbb{H} \iff \text{Es existieren } \alpha, \beta, \gamma \in \mathbb{R} \text{ mit } \beta^2 - \alpha \gamma > 0,
 \]
 sodass
 \[
@@ -2099,6 +2099,65 @@ Man rechnet nach, dass \(h\)-Geraden in zwei Typen kommen und umgekehrt jede Men
 r = \frac{\beta^2 - \alpha \gamma}{\alpha^2}.
 \]
 \end{definition}
+
+\begin{lemma}[\(\mathbb{H}\) ist Inzidenzgeometrie]
+Durch zwei verschiedene Punkte \(z_1 = x_1 + i \cdot y_1, z_2 = x_2 + i \cdot y_2 \in \mathbb{H}\) geht genau eine \(h\)-Gerade.
+\end{lemma}
+
+\begin{proof}
+Wir müssen zeigen, dass das lineare Gleichungssystem:
+\[
+\begin{aligned}
+    \alpha z_1 \overline{z_1} + \beta (z_1 + \overline{z_1}) + \gamma &= 0 \quad (1), \\
+    \alpha z_2 \overline{z_2} + \beta (z_2 + \overline{z_2}) + \gamma &= 0 \quad (2),
+\end{aligned}
+\]
+einen eindimensionalen Lösungsraum mit \(\beta^2 - \alpha \gamma > 0\) hat.
+
+Für \(z_1 \neq z_2\) können wir schreiben:
+\[
+z_1 \overline{z_1} = x_1^2 + y_1^2, \quad z_1 + \overline{z_1} = 2x_1, \quad z_2 \overline{z_2} = x_2^2 + y_2^2, \quad z_2 + \overline{z_2} = 2x_2.
+\]
+Die Vektoren 
+\[
+\begin{pmatrix} x_1^2 + y_1^2 \\ 2x_1 \\ 1 \end{pmatrix}
+\quad \text{und} \quad
+\begin{pmatrix} x_2^2 + y_2^2 \\ 2x_2 \\ 1 \end{pmatrix}
+\]
+sind aufgrund von \(z_1 \neq z_2\) linear unabhängig. Daher ist der Lösungsraum des obigen Gleichungssystems eindimensional, und die Lösungen 
+\[
+\begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix}
+\]
+sind gerade die Vektoren, die orthogonal zu den beiden gegebenen Vektoren stehen.
+
+Nun müssen wir zeigen, dass \(\beta^2 - \alpha \gamma > 0\). Dies prüfen wir für drei Fälle:
+
+\textbf{Fall 1:} \(x_1^2 + y_1^2 \neq x_2^2 + y_2^2\) und \(x_1 \neq x_2\).  
+In diesem Fall folgt \(\beta^2 - \alpha \gamma > 0\) direkt durch Einsetzen in die beiden Gleichungen.
+
+\textbf{Fall 2:} \(x_1^2 + y_1^2 = x_2^2 + y_2^2\) und \(x_1 \neq x_2\).  
+Da \(x_1 \neq x_2\), erhalten wir aus dem Gleichungssystem:
+\[
+2\beta (x_1 - x_2) = 0 \implies \beta = 0.
+\]
+Einsetzen in die Gleichungen ergibt:
+\[
+\alpha = -\frac{\gamma}{x_1^2 + y_1^2}.
+\]
+Insbesondere gilt \(-\alpha \gamma > 0\), da \(x_1^2 + y_1^2 > 0\).
+
+\textbf{Fall 3:} \(x_1 = x_2\).  
+Hier folgt \(y_1 \neq y_2\), da \(z_1 \neq z_2\). Aus den Gleichungen ergibt sich:
+\[
+\alpha = 0, \quad \beta \neq 0 \quad \text{(da sonst auch \(\gamma = 0\) wäre)}.
+\]
+Somit gilt:
+\[
+\beta^2 - \alpha \gamma = \beta^2 > 0.
+\]
+
+In allen Fällen folgt \(\beta^2 - \alpha \gamma > 0\), und daher existiert genau eine \(h\)-Gerade durch \(z_1\) und \(z_2\).
+\end{proof}
 
 
 \end{document}
