@@ -35,6 +35,11 @@
 
 % Makros
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\HK}{\mathbb{H}}
+\newcommand{\K}{\mathbb{K}}
 \newcommand{\notimplies}{\centernot\implies}
 
 % Dokumentanfang
@@ -2927,5 +2932,156 @@ Sei $n \in \mathbb{N}_0$. Ein topologischer Raum $(M, \tau)$ heißt \emph{$n$-di
     Schreibe $\mathbb{R}P^n$ für die Menge der Äquivalenzklassen $\mathbb{R}^{n+1} \setminus \{0\} / \sim$ mit der Quotiententopologie, die durch die kanonische Projektion induziert wird. Dieser Raum heißt der \emph{$n$-dimensionale reelle projektive Raum} und ist eine $n$-dimensionale Mannigfaltigkeit.
 \end{enumerate}
 \end{example}
+
+\section{Kurven und Flächen}
+
+\begin{definition}[Glatte Kurve]
+Sei \( I \subseteq \mathbb{R} \) ein offenes Intervall.  
+Eine \emph{parametrisierte differenzierbare} (für uns \( C^\infty \)) \emph{Kurve} ist eine differenzierbare Abbildung  
+\[
+\gamma: I \to \mathbb{R}^n.
+\]
+Die Kurve \( \gamma \) heißt \emph{regulär}, falls für alle \( t \in I \) gilt:
+\[
+\gamma'(t) \neq 0.
+\]
+Falls \( I = [a,b] \), heißt \( \gamma: I \to \mathbb{R}^n \) \emph{differenzierbar}, wenn es eine differenzierbare Fortsetzung  
+\[
+\hat{\gamma}: (a-\varepsilon, b+\varepsilon) \to \mathbb{R}^n
+\]
+für ein \( \varepsilon > 0 \) gibt.  
+
+Die Menge \( \operatorname{Bild}(\gamma) \) heißt \emph{Spur} der Kurve \( \gamma \).
+\end{definition}
+
+\begin{example}
+Die Abbildung  
+\[
+\gamma: [0, 2\pi] \to \mathbb{R}^2, \quad t \mapsto R \cdot \begin{pmatrix} \cos t \\ \sin t \end{pmatrix}
+\]
+ist eine reguläre parametrisierte glatte Kurve mit  
+\[
+\operatorname{Spur}(\gamma) = S_R^1,
+\]
+wobei \( S_R^1 \) den Kreis mit Radius \( R \) bezeichnet.
+\end{example}
+
+\begin{definition}[Länge von Kurven]
+Es sei \( \gamma: I \to \mathbb{R}^n \) eine glatte parametrisierte Kurve.  
+Die \emph{Länge} von \( \gamma \) ist definiert durch  
+\[
+L(\gamma) := \int_I \|\gamma'(t)\| \, dt \in [0, \infty],
+\]
+wobei die Norm durch  
+\[
+\|\gamma'(t)\| = \sqrt{\sum_{i=1}^{n} \gamma_i'(t)^2} = \sqrt{\langle \gamma'(t), \gamma'(t) \rangle}
+\]
+gegeben ist.
+\end{definition}
+
+Wir suchen nach optimalen Parametrisierungen. In diesem Sinne sagen wir, dass eine Kurve  
+\( \gamma: I \to \mathbb{R}^n \) \emph{nach Bogenlänge parametrisiert} ist, falls  
+\[
+\|\gamma'(t)\| = 1 \quad \text{für alle } t \in I.
+\]
+In diesem Fall vereinfacht sich die Längenformel zu  
+\[
+L(\gamma) = \int_I 1 \, dt = |I|.
+\]
+Eine zentrale Frage ist, ob jede Kurve nach Bogenlänge parametrisiert werden kann.
+
+\begin{definition}[Umparametrisierung]
+Seien \( \gamma: I \to \mathbb{R}^n \) und \( \tilde{\gamma}: J \to \mathbb{R}^n \) parametrisierte glatte Kurven.  
+Wir nennen \( \tilde{\gamma} \) eine \emph{Umparametrisierung} von \( \gamma \), falls ein Diffeomorphismus  
+\[
+\phi: J \to I
+\]
+existiert, sodass  
+\[
+\tilde{\gamma} = \gamma \circ \phi.
+\]
+Die Abbildung \( \phi \) heißt \emph{Parameterwechsel}.  
+
+Ein solcher Parameterwechsel heißt  
+\begin{itemize}
+    \item \emph{orientierungserhaltend}, falls \( \phi'(t) > 0 \) für alle \( t \in J \),
+    \item \emph{orientierungsumkehrend}, falls \( \phi'(t) < 0 \) für alle \( t \in J \).
+\end{itemize}
+\end{definition}
+
+\begin{lemma}[Parametrisierung nach Bogenlänge]
+Sei \( \gamma: I \to \mathbb{R}^n \) eine parametrisierte reguläre glatte Kurve.  
+Dann existiert eine bis auf Translation und Orientierung eindeutige Umparametrisierung  
+\[
+\phi: J \to I,
+\]
+sodass \( \tilde{\gamma} = \gamma \circ \phi \) nach Bogenlänge parametrisiert ist.
+\end{lemma}
+
+\begin{definition}[Krümmung einer ebenen Kurve]
+Eine parametrisierte, glatte Kurve \( \gamma: I \to \mathbb{R}^2 \) heißt \emph{ebene Kurve}.  
+Ist \( \gamma \) zusätzlich regulär und nach Bogenlänge parametrisiert, so definieren wir den \emph{Normalenvektor}  
+\[
+n_{\gamma}: I \to \mathbb{R}^2 \setminus \{0\}, \quad t \mapsto  
+\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \cdot  
+\begin{pmatrix} \gamma_1'(t) \\ \gamma_2'(t) \end{pmatrix}.
+\]
+Weil \( \gamma \) nach Bogenlänge parametrisiert ist, gilt  
+\[
+\frac{d}{dt} \langle \gamma'(t), \gamma'(t) \rangle = 2 \langle \gamma'(t), \gamma''(t) \rangle = 0,
+\]
+was impliziert, dass \( \gamma''(t) \) proportional zu \( n_{\gamma}(t) \) ist.  
+Daher existiert eine Funktion \( R: I \to \mathbb{R} \) mit  
+\[
+\gamma''(t) = R(t) \cdot n_{\gamma}(t).
+\]
+Die Funktion \( R \) heißt die \emph{Krümmung} der Kurve \( \gamma \).  
+
+Für eine beliebige ebene Kurve \( \tilde{\gamma}: J \to \mathbb{R}^2 \) definieren wir die Krümmung als  
+\[
+\tilde{R}: J \to \mathbb{R}, \quad t \mapsto R(\phi^{-1}(t)),
+\]
+wobei \( R: I \to \mathbb{R} \) die Krümmung einer orientierungserhaltenden Umparametrisierung  
+\( \gamma = \tilde{\gamma} \circ \phi \), \( \phi: I \to J \), von \( \tilde{\gamma} \) nach Bogenlänge ist.
+\end{definition}
+
+\begin{lemma}[Frenet-Gleichungen in der Ebene]
+Sei \( \gamma: I \to \mathbb{R}^2 \) eine nach Bogenlänge parametrisierte, reguläre Kurve.  
+Definiere den Tangentialvektor als  
+\[
+v(t) := \gamma'(t),
+\]
+und den Normalenvektor als  
+\[
+n(t) := \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \cdot v(t).
+\]
+Dann gelten die \emph{Frenet-Gleichungen}:  
+\[
+v'(t) = R_{\gamma}(t) \cdot n(t),
+\]
+\[
+n'(t) = -R_{\gamma}(t) \cdot v(t),
+\]
+wobei \( R_{\gamma}(t) \) die Krümmung der Kurve ist.
+\end{lemma}
+
+\begin{theorem}[Hauptsatz der ebenen Kurventheorie]
+Sei \( R: I \to \mathbb{R} \) eine glatte Funktion, sowie  
+\( t_0 \in I \), \( p_0 \in \mathbb{R}^2 \), \( v_0 \in \mathbb{R}^2 \) mit \( \|v_0\| = 1 \).  
+
+Dann existiert genau eine nach Bogenlänge parametrisierte Kurve  
+\[
+\gamma: I \to \mathbb{R}^2
+\]
+mit den Anfangsbedingungen  
+\[
+\gamma(t_0) = p_0, \quad \gamma'(t_0) = v_0
+\]
+und der Krümmung  
+\[
+R_{\gamma}(t) = R(t) \quad \text{für alle } t \in I.
+\]
+\end{theorem}
+
 
 \end{document}
