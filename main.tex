@@ -2100,7 +2100,7 @@ r = \frac{\beta^2 - \alpha \gamma}{\alpha^2}.
 \]
 \end{definition}
 
-\begin{lemma}[\(\mathbb{H}\) ist Inzidenzgeometrie]
+\begin{lemma}[\(\mathbb{H}\) ist Inzidenzgeometrie]\label{lemma:h_inzidenzgeometrie}
 Durch zwei verschiedene Punkte \(z_1 = x_1 + i \cdot y_1, z_2 = x_2 + i \cdot y_2 \in \mathbb{H}\) geht genau eine \(h\)-Gerade.
 \end{lemma}
 
@@ -2159,5 +2159,773 @@ Somit gilt:
 In allen Fällen folgt \(\beta^2 - \alpha \gamma > 0\), und daher existiert genau eine \(h\)-Gerade durch \(z_1\) und \(z_2\).
 \end{proof}
 
+\begin{corollary}[$(\mathbb{H}, \Gamma_\mathbb{H})$ ist eine Inzidenzgeometrie]
+Das Paar $(\mathbb{H}, \Gamma_\mathbb{H})$ ist eine Inzidenzgeometrie.
+\end{corollary}
+
+\begin{proof}
+Nach Lemma~\ref{lemma:h_inzidenzgeometrie} ist gerade Axiom \((I1)\) erfüllt. Axiom \((I2)\) ist unmittelbar klar.
+
+Für \((I3)\) betrachten wir die Punkte \( (0,1) \), \( (0,2) \) und \( (1,1) \). 
+
+Angenommen, diese Punkte lägen alle auf einer gemeinsamen Geraden. Dann müsste insbesondere \( (1,1) \) auf der Geraden durch \( (0,1) \) und \( (0,2) \) liegen. Da diese Gerade aber senkrecht zur \(x\)-Achse verläuft, kann \( (1,1) \) nicht auf ihr liegen. Damit sind die drei Punkte nicht kollinear, und \((I3)\) ist erfüllt.
+\end{proof}
+
+\begin{lemma}[$(\mathbb{H}, \Gamma_{\mathbb{H}})$ erfüllt (P) nicht]
+Das Paar $(\mathbb{H}, \Gamma_{\mathbb{H}})$ erfüllt das Parallelaxiom \((P)\) nicht.
+\end{lemma}
+
+\begin{proof}
+Betrachte die Punkte \( (0,1) \) und \( (3,1) \) in \( \mathbb{H} \). 
+
+Die beiden Geraden 
+\[
+g_1 = \{ z \in \mathbb{H} \mid z + \overline{z} = 0 \}
+\]
+und
+\[
+g_2 = \{ z \in \mathbb{H} \mid z \cdot \overline{z} = 1 \}
+\]
+verlaufen beide durch \( (0,1) \) und schneiden sich nicht mit der Geraden 
+\[
+g_3 = \{ z \in \mathbb{H} \mid (z - 3)(\overline{z} - 3) = 1 \}.
+\]
+
+Da also durch \( (0,1) \) mehr als eine Gerade existiert, die zu \( g_3 \) parallel ist, ist das Parallelaxiom \((P)\) verletzt.
+\end{proof}
+
+\begin{definition}[Streckenordnung auf $\mathbb{H}$]\label{def:streckenordnung_h}
+Auf $(\mathbb{H}, \Gamma_{\mathbb{H}})$ definieren wir die Streckenordnung wie folgt:
+
+Seien \( A, B, C \in g \) für eine Gerade \( g \in \Gamma_{\mathbb{H}} \). Dann setzen wir:
+
+\begin{itemize}
+    \item Falls \( g \) vom Typ 1 ist, gilt:
+    \[
+    A * B * C \iff p_y(A) * p_y(B) * p_y(C) \text{ in } \mathbb{R}^+,
+    \]
+    wobei die Projektion \( p_y: \mathbb{H} \to \mathbb{R}^+ \) definiert ist durch
+    \[
+    p_y(x,y) = (0,y).
+    \]
+    
+    \item Falls \( g \) vom Typ 2 ist, gilt:
+    \[
+    A * B * C \iff p_x(A) * p_x(B) * p_x(C) \text{ in } \mathbb{R},
+    \]
+    wobei die Projektion \( p_x: \mathbb{H} \to \mathbb{R} \) definiert ist durch
+    \[
+    p_x(x,y) = x.
+    \]
+\end{itemize}
+\end{definition}
+
+\begin{lemma}[$\mathbb{H}$ erfüllt \((S1)\)-\((S4)\)]
+Sei $(\mathbb{H}, \Gamma_{\mathbb{H}})$ die hyperbolische Ebene mit Streckenordnung wie in Definition~\ref{def:streckenordnung_h} Dann gelten die Axiome \((S1)\)-\((S4)\).
+\end{lemma}
+
+\begin{proof}
+Die Axiome \((S1)\)-\((S3)\) folgen daraus, dass \(h\)-Geraden durch \( p_x \) bzw. \( p_y \) bijektiv und ordnungserhaltend auf offene Intervalle in \( \mathbb{R} \) abgebildet werden.
+
+Für \((S4)\) nutzen wir bekannte Eigenschaften aus \( \mathbb{R}^2 \): Für Geraden und Kreise in \( \mathbb{R}^2 \) lassen sich natürliche Begriffe für Seiten sowie Inneres und Äußeres definieren. Dies erlaubt uns, eine Seite einer \(h\)-Geraden im Sinne von Proposition~1.11 zu betrachten.
+
+Nun wenden wir diese Eigenschaften auf Paschs Axiom an: Sei \( \triangle ABC \) ein Dreieck in \( \mathbb{H} \) und \( g \in \Gamma_{\mathbb{H}} \) eine Gerade mit \( A, B, C \notin g \), die \( \overline{AB} \) schneidet. 
+
+Falls \( g \cap \overline{BC} \neq \emptyset \), so liegen \( A \) und \( C \) auf derselben Seite von \( g \), woraus folgt, dass \( \overline{AC} \cap g = \emptyset \).  
+Falls hingegen \( g \cap \overline{AC} \neq \emptyset \), so liegen \( B \) und \( C \) auf derselben Seite von \( g \), was \( \overline{BC} \cap g = \emptyset \) impliziert.  
+
+Wäre jedoch \( \overline{AC} \cap g = \emptyset = \overline{BC} \cap g \), so wären \( A, B, C \) einerseits gemeinsam auf einer Seite von \( g \), andererseits würden aber \( A \) und \( B \) auf verschiedenen Seiten von \( g \) liegen – ein Widerspruch.  
+Damit ist \((S4)\) erfüllt.
+\end{proof}
+
+\begin{definition}[Möbiustransformation]
+Sei \( A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL(2, \mathbb{R}) \).  
+Eine \emph{Möbiustransformation} ist eine Abbildung der Form  
+\[
+f_A: \mathbb{H} \to \mathbb{H}, \quad z \mapsto \frac{az + b}{cz + d}
+\]
+oder  
+\[
+\overline{f}_A: \mathbb{H} \to \mathbb{H}, \quad z \mapsto \frac{-a\overline{z} + b}{-c\overline{z} + d}.
+\]
+Wir bezeichnen mit \( I_{\mathbb{H}} \) die Menge aller Möbiustransformationen.
+\end{definition}
+
+\begin{lemma}[$I_{\mathbb{H}}$ ist wohldefiniert]
+Für \( A \in SL(2, \mathbb{R}) \) gilt:
+\begin{enumerate}
+    \item \( f_A(\mathbb{H}) = \mathbb{H} = \overline{f}_A(\mathbb{H}) \).
+    \item \( I_{\mathbb{H}} \) ist eine Gruppe.
+    \item \( I_{\mathbb{H}} \) wird erzeugt von Abbildungen der Form
+    \[
+    z \mapsto -\frac{1}{z}, \quad z \mapsto az, \quad z \mapsto -\overline{z}, \quad z \mapsto z + b
+    \]
+    mit \( a \in \mathbb{R}^+ \), \( b \in \mathbb{R} \).  
+    Das heißt, \( f_A \) und \( \overline{f}_A \) sind endliche Verknüpfungen dieser Abbildungen.
+    \item \( I_{\mathbb{H}} \) bildet \(h\)-Geraden auf \(h\)-Geraden ab.
+    \item \( I_{\mathbb{H}} \) erhält Streckenordnungen.
+\end{enumerate}
+\end{lemma}
+
+\begin{definition}[Kongruenzrelationen \(\cong\) und \(\cong_w\) auf \(\mathbb{H}\)]
+Für Strecken \(\overline{AB}, \overline{CD} \subseteq \mathbb{H}\) definieren wir die Kongruenzrelation  
+\[
+\overline{AB} \cong \overline{CD} \iff \exists f \in I_{\mathbb{H}} \text{ mit } f(\overline{AB}) = \overline{CD}.
+\]
+Für Winkel \(\angle ABC, \angle DEF\) in \(\mathbb{H}\) definieren wir  
+\[
+\angle ABC \cong_w \angle DEF \iff \exists f \in I_{\mathbb{H}} \text{ mit } f(\angle ABC) = \angle DEF.
+\]
+Insbesondere ist nach dieser Definition die Gruppe \( I_{\mathbb{H}} \) eine Untergruppe der Bewegungsgruppe von \(\mathbb{H}\).
+\end{definition}
+
+\begin{proposition}[$\mathbb{H}$ erfüllt \((EB)\)]
+    Die Geometrie $(\mathbb{H}, \Gamma_\mathbb{H}, Z_\mathbb{H}, \cong, \cong_w)$ erfüllt \((EB)\).
+\end{proposition}
+
+\begin{lemma}
+    Sei $g\in\Gamma_\mathbb{H}\subseteq\mathbb{H}$, $P,Q\in g$, $P\neq Q$, $R,S\in\mathbb{H}$, $R\neq S$.\\Dann existieren genau zwei Abbildungen $f_A,\overline{f}_B\in I_\mathbb{H}$ mit $f_A(R)=\overline{f}_B(R)=P$ und $f_A(S),\overline{f}_B(S)$ auf der selben Seite von $P$ wie $Q$. \\Weiter gilt $f_A(S)=\overline{f}_B(S)$.
+\end{lemma}
+
+\begin{lemma}[Punktetausch]
+    Sei $\overline{PQ}$ Strecke in $\mathbb{H}$, dann existiert $f\in I_\mathbb{H}$ mit $f(p)=Q$, $f(Q)=P$. Insbesondere $$f(\overline{PQ}) = \overline{QP}$$
+\end{lemma}
+
+\begin{theorem}[$(\mathbb{H}, \Gamma_\mathbb{H}, Z_\mathbb{H}, \cong, \cong_w)$ ist eine Hilbertebene]
+    Die Hyperbolische Ebene erfüllt die Axiome $(K1)$-$(K5)$.
+\end{theorem}
+
+\section{Topologie} % Neuer Hauptabschnitt
+
+\subsection{Metrische und topologische Räume} % Unterabschnitt
+
+\begin{definition}[Metrischer Raum]
+Ein \emph{metrischer Raum} ist ein Paar $(M, d)$, bestehend aus einer Menge $M \neq \emptyset$ und einer Abbildung $d: M \times M \to \mathbb{R}_{\geq 0}$, sodass folgende Eigenschaften gelten:
+\begin{itemize}
+    \item[(i)] $d(x, y) = 0 \iff x = y$ \hfill (Positiv definit)
+    \item[(ii)] $d(x, y) = d(y, x)$ \hfill (Symmetrie)
+    \item[(iii)] $d(x, z) \leq d(x, y) + d(y, z)$ \hfill (Dreiecksungleichung)
+\end{itemize}
+\end{definition}
+
+In einem metrischen Raum gibt es Begriffe wie \emph{Stetigkeit}, \emph{Kongruenz} und \emph{Kompaktheit}.
+
+\begin{definition}[Offene Mengen in $(M, d)$]
+Sei $(M, d)$ ein metrischer Raum. Eine Teilmenge $O \subset M$ heißt \emph{offen}, falls für alle $x \in O$ ein $\epsilon(x) > 0$ existiert, sodass gilt:
+\[
+B_{\epsilon}(x) \subset O,
+\]
+wobei $B_{\epsilon}(x) = \{y \in M : d(x, y) < \epsilon\}$ der \emph{$\epsilon$-Ball} ist. 
+
+Bemerkung: Ein $\epsilon$-Ball ist stets offen.
+\end{definition}
+
+\begin{example}[$d_\infty$- und $d_2$-Metrik]
+Auf $\mathbb{R}^2$ lassen sich die folgenden Metriken definieren:
+\begin{itemize}
+    \item $d_\infty((x_1, x_2), (y_1, y_2)) = \max(|x_1 - y_1|, |x_2 - y_2|)$,
+    \item $d_2((x_1, x_2), (y_1, y_2)) = \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2}$.
+\end{itemize}
+Die Einheitbälle mit Radius $1$ um den Ursprung $0$ unterscheiden sich in diesen Metriken:
+\begin{itemize}
+    \item Der $d_\infty$-Ball ist ein Quadrat,
+    \item Der $d_2$-Ball ist ein Kreis.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+        % d_infty-Ball
+        \begin{scope}[xshift=-2.5cm]
+            \draw[thick,->] (-1.5,0) -- (1.5,0) node[right] {$x_1$};
+            \draw[thick,->] (0,-1.5) -- (0,1.5) node[above] {$x_2$};
+            \draw[blue,thick] (-1,-1) rectangle (1,1);
+            \node at (0,-1.8) {\small $d_\infty$-Metrik};
+        \end{scope}
+        
+        % d_2-Ball
+        \begin{scope}[xshift=2.5cm]
+            \draw[thick,->] (-1.5,0) -- (1.5,0) node[right] {$x_1$};
+            \draw[thick,->] (0,-1.5) -- (0,1.5) node[above] {$x_2$};
+            \draw[red,thick] (0,0) circle(1);
+            \node at (0,-1.8) {\small $d_2$-Metrik};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Vergleich der Einheitbälle in $d_\infty$- und $d_2$-Metrik auf $\mathbb{R}^2$.}
+    \label{fig:metric_balls}
+\end{figure}
+\end{example}
+
+
+
+\begin{lemma}[Stetigkeit in $(M,d)$]
+
+Sei $f : (M, d) \to (M', d')$ eine Abbildung zwischen metrischen Räumen. Dann ist die Abbildung $f$ stetig, wenn und nur wenn für jedes $\epsilon > 0$ ein $\delta > 0$ existiert, sodass für alle $x \in M$ gilt:
+\[
+d(x, y) < \delta \quad \Rightarrow \quad d'(f(x), f(y)) < \epsilon.
+\]
+
+Die Stetigkeit von $f$ ist äquivalent dazu, dass für jede offene Menge $O \subset M'$ gilt:
+\[
+f^{-1}(O) \subset M \text{ ist offen}.
+\]
+\end{lemma}
+
+\begin{definition}
+Eine \textbf{Topologie} auf einer Menge $X$ ist ein Mengensystem $\tau \subset \mathcal{P}(X)$, dessen Elemente \textit{offene Mengen} genannt werden, und das folgende Eigenschaften erfüllt:
+\begin{enumerate}
+    \item $\emptyset, X \in \tau$,
+    \item Wenn $A, B \in \tau$, dann gilt $A \cap B \in \tau$,
+    \item Wenn $U_i \in \tau$ für jedes $i \in I$, dann gilt $\bigcup_{i \in I} U_i \in \tau$.
+\end{enumerate}
+Ein \textbf{topologischer Raum} ist ein Paar $(X, \tau)$, bestehend aus einer Menge $X$ und einer Topologie $\tau$ auf $X$.
+\end{definition}
+
+\begin{example}[Topologien]
+Beispiele für Topologien:
+\begin{enumerate}
+    \item Sei $(M, d)$ ein metrischer Raum. Dann definiert 
+    \[
+    \tau_d := \{O \subset M : O \text{ ist offen bezüglich } d\}
+    \]
+    eine Topologie auf $M$. Wir nennen $\tau_d$ die von der Metrik induzierte Topologie.
+    
+    \item Sei $(X, \tau)$ ein topologischer Raum und $Y \subset X$. Dann definiert 
+    \[
+    \tau_Y := \{O \subset Y : \text{es existiert ein } V \subset X, \text{ offen in } X, \text{ mit } V \cap Y = O\}
+    \]
+    eine Topologie auf $Y$. Diese Topologie wird \textbf{Relativtopologie} oder \textbf{Teilraum} genannt.
+    
+    \item Für jede Menge $X$ gibt es die \textbf{diskrete Topologie}, gegeben durch $\tau = \mathcal{P}(X)$.
+    
+    \item Für jede Menge $X$ gibt es die \textbf{indiskrete Topologie}, gegeben durch $\tau = \{\emptyset, X\}$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}[Stetigkeit]
+Eine Abbildung $f : (X, \tau_X) \to (Y, \tau_Y)$ heißt \textit{stetig}, falls für jede offene Menge $O \subset Y$ gilt:
+\[
+f^{-1}(O) \text{ ist offen in } X.
+\]
+\end{definition}
+
+\begin{lemma}[Stetige Abbildungen]
+Folgende Abbildungen sind stetig:
+\begin{enumerate}
+    \item Die Identität $\text{id}_X : (X, \tau_X) \to (X, \tau_X)$ ist stetig für alle topologischen Räume $(X, \tau_X)$.
+    
+    \item Seien $X \xrightarrow{f} Y$ und $Y \xrightarrow{g} Z$ stetige Abbildungen. Dann ist auch die Verkettung $X \xrightarrow{g \circ f} Z$ stetig.
+    
+    \item Sei $A \subset Z$ ein Teilraum und $f : X \to A$ eine Abbildung. Dann gilt: $X \xrightarrow{f} A$ ist stetig genau dann, wenn $X \xrightarrow{f} Z$ stetig ist.
+\end{enumerate}
+\end{lemma}
+
+\begin{example}[Stetigkeit]
+Die Abbildung 
+\[
+f : [0,1] \to S^1 = \{z \in \mathbb{C} \mid |z| = 1\}, \quad t \mapsto e^{2\pi t i}
+\]
+ist stetig, wobei $[0,1]$ und $S^1$ jeweils mit der Relativtopologie versehen sind.
+\end{example}
+
+\begin{definition}[Produkttopologie]
+Seien $(X, \tau_X)$ und $(Y, \tau_Y)$ topologische Räume. Wir definieren die \textbf{Produkttopologie} auf $X \times Y$ wie folgt:
+
+Betrachte dazu 
+\[
+\mathcal{B} := \{U \times V : U \in \tau_X, V \in \tau_Y\},
+\]
+und setze 
+\[
+\tau_{X \times Y} := \left\{\bigcup_{i \in I} B_i : B_i \in \mathcal{B}, \, i \in I\right\}.
+\]
+
+Dann ist $\tau_{X \times Y}$ eine Topologie auf $X \times Y$.
+\end{definition}
+
+\begin{lemma}[Produkttopologie und Projektionen]
+Eine Abbildung $f : Z \to X \times Y$ mit der Produkttopologie ist genau dann stetig, wenn die Abbildungen 
+\[
+\pi_X \circ f : Z \to X \quad \text{und} \quad \pi_Y \circ f : Z \to Y
+\]
+stetig sind, wobei $\pi_X : X \times Y \to X$ und $\pi_Y : X \times Y \to Y$ die kanonischen Projektionen sind.
+\end{lemma}
+
+\begin{definition}[Homöomorphismen]
+Eine Abbildung $f : X \to Y$ zwischen topologischen Räumen heißt \textbf{Homöomorphismus}, falls $f$ stetig, bijektiv und $f^{-1}$ ebenfalls stetig ist.
+\end{definition}
+
+\begin{definition}[Inneres]
+Sei $(X, \tau)$ ein topologischer Raum und $A \subset X$ eine Teilmenge. Das \emph{Innere} von $A$ in $X$ ist definiert durch:
+\[
+A^\circ := \bigcup_{O \subset A, \, O \text{ offen}} O.
+\]
+Das Innere $A^\circ$ ist die größte offene Teilmenge, die in $A$ enthalten ist.
+\end{definition}
+
+\begin{definition}[Abgeschlossenheit]
+Sei $(X, \tau)$ ein topologischer Raum und $A \subset X$ eine Teilmenge. Wir nennen $A$ \emph{abgeschlossen} in $X$, falls $X \setminus A = A^C$ offen ist. 
+
+Es gelten folgende Eigenschaften:
+\begin{enumerate}
+    \item $\emptyset$ und $X$ sind abgeschlossen.
+    \item Sind $A, B \subset X$ abgeschlossen, so ist auch $A \cup B$ abgeschlossen.
+    \item Sind $(A_i)_{i \in I}$ eine Familie abgeschlossener Mengen in $X$, so ist auch $\bigcap_{i \in I} A_i$ abgeschlossen.
+\end{enumerate}
+
+Eine Abbildung $f: X \to Y$ zwischen topologischen Räumen ist \emph{stetig}, genau dann, wenn $A \subset Y$ abgeschlossen impliziert $f^{-1}(A)$ ist abgeschlossen.
+\end{definition}
+
+\begin{definition}[Abschluss]
+Sei $(X, \tau)$ ein topologischer Raum und $A \subset X$ eine Teilmenge. Der \emph{Abschluss} von $A$ ist definiert durch:
+\[
+\overline{A} := \bigcap_{\substack{A \subset U \\ U \text{ abgeschlossen}}} U.
+\]
+$\overline{A}$ ist die kleinste abgeschlossene Menge, die $A$ enthält.
+
+Ein Punkt $x \in \overline{A}$ genau dann, wenn jede offene Menge $O \subset X$ mit $x \in O$ die Menge $A$ schneidet, das heißt:
+\[
+O \cap A \neq \emptyset.
+\]
+\end{definition}
+
+\begin{lemma}[Abschluss und Stetigkeit]
+Eine Abbildung $f: X \to Y$ zwischen topologischen Räumen ist \emph{stetig}, genau dann, wenn für alle $A \subset X$ gilt:
+\[
+f(\overline{A}) \subset \overline{f(A)}.
+\]
+\end{lemma}
+
+Wir fragen uns: Welche Topologien werden von Metriken induziert? Ein notwendiges Kriterium ist:
+
+\begin{definition}[Hausdorff-Raum]
+Ein topologischer Raum $(X, \tau)$ heißt \emph{hausdorffsch}, falls für alle $x, y \in X$ mit $x \neq y$ Mengen $U, V \in \tau$ existieren, sodass gilt:
+\[
+x \in U, \quad y \in V \quad \text{und} \quad U \cap V = \emptyset.
+\]
+\end{definition}
+
+\begin{definition}[Zusammenhang]
+Ein topologischer Raum $(X, \tau)$ heißt \emph{zusammenhängend}, falls jede stetige Abbildung von $X$ in einen beliebigen diskreten Raum konstant ist.
+\end{definition}
+
+\begin{example}[Zusammenhängende Räume]
+Hier sind Beispiele für zusammenhängende und nicht zusammenhängende Räume:
+\begin{enumerate}
+    \item Sei $X$ ein diskreter topologischer Raum. Dann ist $X$ genau dann zusammenhängend, wenn $|X| \leq 1$. Falls $|X| > 1$, betrachte $x, y \in X$ mit $x \neq y$ und die stetige Abbildung $f: X \to \mathbb{Z}_2$, definiert durch:
+    \[
+    f(z) = 
+    \begin{cases} 
+        0, & \text{falls } z = x, \\ 
+        1, & \text{falls } z \neq x.
+    \end{cases}
+    \]
+    Dann ist $f$ stetig, aber nicht konstant. Somit ist $X$ nicht zusammenhängend.
+
+    \item Der Raum $\mathbb{R} \setminus \{0\}$ ist nicht zusammenhängend, da die Abbildung
+    \[
+    \operatorname{sgn}: \mathbb{R} \setminus \{0\} \to \{-1, 1\}, \quad x \mapsto 
+    \begin{cases} 
+        -1, & \text{falls } x < 0, \\ 
+        1, & \text{falls } x > 0
+    \end{cases}
+    \]
+    stetig, aber nicht konstant ist.
+
+    \item Sind $X$ und $Y$ zusammenhängende Räume, so ist auch die Produkttopologie $X \times Y$ zusammenhängend.
+\end{enumerate}
+\end{example}
+
+\begin{lemma}[Charakterisierung des Zusammenhangs]
+Ein topologischer Raum $(X, \tau)$ ist genau dann \emph{zusammenhängend}, wenn $\emptyset$ und $X$ die einzigen Mengen sind, die sowohl offen als auch abgeschlossen sind.
+\end{lemma}
+
+\begin{lemma}[Stetige Bilder zusammenhängender Mengen]
+Sei $f: X \to Y$ eine stetige, surjektive Abbildung zwischen topologischen Räumen. Dann gilt:
+\[
+X \text{ zusammenhängend} \implies Y \text{ zusammenhängend}.
+\]
+\end{lemma}
+
+\begin{corollary}[Zwischenwertsatz]
+Sei $(X, \tau)$ zusammenhängend und $f : X \to \mathbb{R}$ stetig. Falls $x < y$ für $x, y \in f(X)$, dann gilt:
+\[
+[x, y] \subset f(X).
+\]
+\end{corollary}
+
+\begin{theorem}[{$[0,1]$} zusammenhängend]
+Das Einheitsintervall $[0,1]$ mit der Teilraumtopologie von $\mathbb{R}$ ist zusammenhängend.
+\end{theorem}
+
+\begin{definition}[Wegzusammenhängend]
+Ein topologischer Raum $X$ heißt \textbf{wegzusammenhängend}, falls es für alle $x, y \in X$ eine stetige Abbildung $f : [0,1] \to X$ gibt, sodass $f(0) = x$ und $f(1) = y$.
+\end{definition}
+
+\begin{lemma}[Bild eines wegzusammenhängenden Raums ist wegzusammenhängend]
+Sei $f : X \to Y$ eine stetige Abbildung zwischen topologischen Räumen und sei $X$ wegzusammenhängend. Dann ist auch $f(X)$ wegzusammenhängend.
+\end{lemma}
+
+\begin{lemma}[Wegzusammenhängend impliziert zusammenhängend]
+Sei $X$ ein wegzusammenhängender topologischer Raum. Dann ist $X$ auch zusammenhängend.
+\end{lemma}
+
+\begin{theorem}[Dimensionsinvarianz für $(\mathbb{R}^n, \mathbb{R})$]
+Der topologische Raum $\mathbb{R}^n$ ist homöomorph zu $\mathbb{R}$ genau dann, wenn $n = 1$.
+\end{theorem}
+
+\begin{lemma}[Äquivalenzrelation]\label{lemma:äquivalenz_topologie}
+Sei $X$ ein topologischer Raum. Wir definieren die Äquivalenzrelation $\sim$ auf $X$ durch
+\[
+x \sim y \quad \text{genau dann, wenn es einen stetigen Weg } f : [0,1] \to X \text{ mit } f(0) = x \text{ und } f(1) = y \text{ gibt.}
+\]
+Dann ist $\sim$ eine Äquivalenzrelation auf $X$.
+\end{lemma}
+
+\begin{lemma}[Verklebungslemma]
+Sei $X$ ein topologischer Raum und $A, B \subset X$ seien abgeschlossen mit $A \cup B = X$. Seien $f : A \to Y$ und $g : B \to Y$ stetige Abbildungen zwischen topologischen Räumen, und sei $f(x) = g(x)$ für alle $x \in A \cap B$. Dann ist die Abbildung
+\[
+h : X \to Y, \quad h(x) = 
+\begin{cases} 
+f(x), & \text{für } x \in A, \\
+g(x), & \text{für } x \in B,
+\end{cases}
+\]
+stetig.
+\end{lemma}
+
+\begin{definition}[Wegzusammenhangskomponenten]
+Sei $X$ ein topologischer Raum und sei $\sim$ eine Äquivalenzrelation auf $X$ wie in~\ref{lemma:äquivalenz_topologie}. Die Äquivalenzklassen von $\sim$ heißen \textbf{Wegzusammenhangskomponenten} von $X$.
+\end{definition}
+
+\subsection{Kompaktheit}
+
+\begin{definition}[Kompaktheit]
+Ein topologischer Raum $X$ heißt \textbf{kompakt}, falls für jede offene Überdeckung $\{U_i : i \in I\}$ von $X$ (d.h. $U_i$ ist offen und $\bigcup_{i \in I} U_i = X$) eine endliche Teilüberdeckung existiert, d.h. es gibt eine endliche Menge $J \subset I$, so dass
+\[
+\bigcup_{j \in J} U_j = X.
+\]
+Beispiel: Jeder endliche topologische Raum ist kompakt.
+\end{definition}
+
+\begin{lemma}[Kompaktheit von $f(K)$]
+Sei $K$ ein kompakter topologischer Raum, $Y$ ein topologischer Raum und $f : K \to Y$ eine surjektive stetige Abbildung. Dann ist $f(K)$ kompakt in $Y$.
+\end{lemma}
+
+\begin{lemma}[Abgeschlossene Teilmengen eines kompakten Raums sind kompakt]
+Sei $K$ ein kompakter topologischer Raum und $A \subset K$ eine abgeschlossene Menge. Dann ist $A$ mit der Teilraumtopologie kompakt.
+\end{lemma}
+
+\begin{lemma}[Kompakte metrische Räume sind beschränkt]
+Sei $(M, d)$ ein kompakter metrischer Raum, d.h. $(M, \tau_d)$ ist kompakt. Dann ist $M$ beschränkt, das heißt, für jedes $x \in M$ existiert ein $R(x) > 0$, so dass $B_R(x) = M$, wobei $B_R(x)$ die offene Bälle um $x$ mit Radius $R$ bezeichnet.
+\end{lemma}
+
+\begin{theorem}
+Sei $X$ ein topologischer Hausdorff-Raum und $K \subset X$ eine kompakte Teilmenge. Dann ist $K$ abgeschlossen.
+\end{theorem}
+
+\begin{corollary}[Kompakt und Maxima]
+Sei $K \neq \emptyset$ ein kompakter topologischer Raum und $f: K \to \mathbb{R}$ eine stetige Abbildung. Dann besitzt $f$ ein Maximum, das heißt, es existiert ein $x \in K$, sodass für alle $y \in K$ gilt:
+\[
+f(x) \geq f(y).
+\]
+\end{corollary}
+
+\begin{corollary}[Homöomorphiekriterium]
+Sei $f: K \to Y$ eine stetige Abbildung zwischen topologischen Räumen, wobei $K$ kompakt und $Y$ hausdorffsch ist. Dann ist $f$ eine abgeschlossene Abbildung, das heißt, für jede abgeschlossene Menge $A \subset K$ gilt:
+\[
+f(A) \subset Y \text{ ist abgeschlossen.}
+\]
+\end{corollary}
+
+\begin{theorem}[{$[0,1]$} ist kompakt]
+Betrachte $[0,1] \subset \mathbb{R}$. Dann ist $[0,1]$ mit der Teilraumtopologie kompakt.
+\end{theorem}
+
+\begin{corollary}[Heine-Borel]
+Sei $A \subset \mathbb{R}$. Dann ist $A$ genau dann kompakt, wenn $A$ in $\mathbb{R}$ abgeschlossen und beschränkt ist.
+\end{corollary}
+Wir untersuchen weitere Charakterisierungen von Kompaktheit.
+Um Kompaktheit mit Hilfe von Kovergenz zu charakterisieren, müssen wir den Konvergenzbegriff verallgemeinern.
+
+\begin{definition}[Grenzproblem]
+Ein \emph{Grenzproblem} in einem topologischen Raum $X$ besteht aus:
+\begin{itemize}
+    \item einem topologischen Raum $D$ mit Basispunkt $\infty \in D$, sodass $\overline{D \setminus \{\infty\}} = D$, das heißt, $D \setminus \{\infty\}$ liegt dicht in $D$,
+    \item einer stetigen Abbildung $f: D \setminus \{\infty\} \to X$.
+\end{itemize}
+Eine \emph{Lösung} des Grenzproblems $(D, f)$ ist eine stetige Fortsetzung $F: D \to X$ von $f$.
+\end{definition}
+
+\begin{example}[Folgen]
+Eine Folge $x: \mathbb{N} \to X$ in $X$ liefert ein Grenzproblem in $X$. Sei 
+\[
+D = \mathbb{N} \cup \{\infty\}
+\]
+mit der Topologie, bei der $O \subset D$ genau dann offen ist, wenn gilt:
+\begin{itemize}
+    \item $O \subset \mathbb{N}$, oder
+    \item es existiert ein $N \in \mathbb{N}$ mit $[N, \infty] \subset O$.
+\end{itemize}
+Dabei trägt $\mathbb{N}$ die diskrete Topologie, und somit ist $f: \mathbb{N} \to X$ stets stetig.
+
+Eine Abbildung $F: D \to X$ ist genau dann stetig, wenn $x_n \to a$ für $n \to \infty$ gilt, wobei $F(\infty) = a$.
+\end{example}
+
+\begin{definition}[Häufungspunkt]
+Ein Element $a \in X$ in einem topologischen Raum heißt \emph{Häufungspunkt} des Grenzproblems $(D, f)$, falls für alle offenen Teilmengen $O \subset X$ mit $a \in O$ und für alle offenen Teilmengen $V \subset D$ mit $\infty \in V$ gilt:
+\[
+f(V \setminus \{\infty\}) \cap O \neq \emptyset.
+\]
+\end{definition}
+
+\begin{theorem}[Charakterisierung der Kompaktheit]
+Für einen topologischen Raum $X$ sind folgende Aussagen äquivalent:
+\begin{enumerate}
+    \item $X$ ist kompakt.
+    \item Für alle $U \subset X \times Y$ offen und alle $y \in Y$ mit $X \times \{y\} \subset U$ existiert eine offene Menge $V \subset Y$ mit $y \in V$ und $X \times V \subset U$. (Teilungslemma)
+    \item Für jeden topologischen Raum $Y$ ist die Projektion $\pi: X \times Y \to Y$, definiert durch $\pi(x,y) = y$, eine abgeschlossene Abbildung.
+    \item Jedes Grenzproblem in $X$ besitzt einen Häufungspunkt.
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma}[Graphen und Häufungspunkte]
+Für ein Grenzproblem $(D, f)$ in einem topologischen Raum $X$ und $a \in X$ sind folgende Aussagen äquivalent:
+\begin{enumerate}
+    \item $a$ ist ein Häufungspunkt von $(D, f)$.
+    \item $(\infty, a) \in \overline{\operatorname{graph}(f)}$, wobei $\operatorname{graph}(f)$ der Graph von $f$ ist und der Abschluss in $D \times X$ betrachtet wird.
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}[Produkte von kompakten Räumen]
+Seien $X$ und $Y$ kompakte topologische Räume. Dann ist auch $X \times Y$ mit der Produkttopologie kompakt.
+\end{theorem}
+
+\begin{corollary}[{$[0,1]^n$} ist kompakt]
+Betrachte $[0,1]^n \subset \mathbb{R}^n$. Dann ist $[0,1]^n$ kompakt in der Teilraumtopologie von $\mathbb{R}^n$.
+\end{corollary}
+
+\begin{corollary}[Heine-Borel in $\mathbb{R}^n$]
+Sei $A \subset \mathbb{R}^n$. Dann ist $A$ genau dann kompakt, wenn $A$ in $\mathbb{R}^n$ abgeschlossen und beschränkt ist.
+\end{corollary}
+
+Wir wollen einen kleinen Exkurs zu universellen Konstruktionen machen:
+
+\begin{theorem}[Induzierte Topologie]
+    Sei $X$ eine Menge und $f_i:X \to X_i$ Abbildungen für $X_i$ für $i \in I$ topologische Räume.
+    Dann existiert genau eine Topologie auf X mit folgender Eigenschaft: \\
+    Für jeden topologischen Raum Z und jede Abbildung $g:Z \to X$ ist $g:Z \to X$ stetig genau dann, wenn für alle $i \in I$ ist $f_i \circ g$ stetig ist. \\ 
+    Diese Topologie heißt induziert von der Familie $(f_i)_{i \in I}$. \\
+    \textbf{Beispiele}: 
+    \begin{enumerate}
+        \item $I=\emptyset$ induziert die Klumpentopologie auf X, da diese Topologie die Eigenschaft hat, dass jede Abbildung $g:Z \to X$ stetig ist. Aus der Eindeutigkeit in 2.47 folgt die Behauptung
+        \item Sei $X \subset Y$ Teilraum, $Y$ topologischer Raum. Die Familie $i:X \to Y$ (Inklusion) induziert die Teilraumtopologie auf X, denn nach 2.8 3) ist eine Abbildung
+        \begin{equation*}
+            Z \overset{g}{\rightarrow} X \text{ ist stetig genau dann, wenn } Z \overset{g}{\rightarrow} X \overset{i}{\rightarrow} Y \text{ stetig ist.}
+        \end{equation*}
+        \item Seien $X_1$, $X_2$ topologische Räume und $X := X_1 \times X_2$. Die Projektionen 
+        \[
+        \pi_i: X \to X_i, \quad (x_1, x_2) \mapsto x_i \quad \text{für } i=1,2,
+        \]
+        induzieren die Produkttopologie auf $X$.
+
+        \item Seien $(X_i)_{i \in I}$ eine Familie topologischer Räume. Dann sei $X := \prod_{i \in I} X_i$. Die Familie der Projektionen 
+        \[
+        \pi_i: X \to X_i, \quad (x_i)_{i \in I} \mapsto x_i \quad \text{für } i \in I,
+        \]
+        induziert die Produkttopologie auf $X$.
+
+        \item Es gilt: Eine Abbildung $f = (f_i)_{i \in I}: Z \to \prod_{i \in I} X_i$ ist genau dann stetig, wenn für alle $i \in I$ die Abbildungen $f_i: Z \to X_i$ stetig sind.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Koinduzierte Topologie]
+Sei $X$ eine Menge und $(X_i)_{i \in I}$ eine Familie topologischer Räume mit Abbildungen $f_i: X_i \to X$ für $i \in I$. Dann gibt es genau eine Topologie auf $X$, die die folgende Eigenschaft erfüllt:
+
+Für jeden topologischen Raum $Z$ und jede Abbildung $g: X \to Z$ gilt:
+\[
+g: X \to Z \text{ ist stetig} \iff \forall i \in I: X_i \xrightarrow{f_i} X \xrightarrow{g} Z \text{ ist stetig.}
+\]
+
+Diese Topologie heißt die \emph{koinduzierte Topologie} von der Familie $(f_i)_{i \in I}$.
+\end{theorem}
+
+\begin{example}
+Es folgen Beispiele zur koinduzierten Topologie:
+\begin{enumerate}
+    \item Die leere Familie $(f_i)_{i \in \emptyset}$ koinduziert die \emph{diskrete Topologie} auf $X$.
+    
+    \item Eine Abbildung $f: Y \to X$ von einem topologischen Raum $Y$ nach $X$ koinduziert die \emph{Quotiententopologie} auf $X$.
+    
+    \item Seien $X_1$ und $X_2$ topologische Räume und $X := X_1 \cup X_2$. Die Inklusionsabbildungen
+    \[
+    i_1: X_1 \to X, \quad i_2: X_2 \to X,
+    \]
+    koinduzieren die \emph{disjunkte Vereinigungstopologie} auf $X$.
+    
+    \item Allgemeiner: Seien $(X_i)_{i \in I}$ eine Familie topologischer Räume und $X := \bigcup_{i \in I} X_i$. Die Familie der Inklusionsabbildungen
+    \[
+    i_i: X_i \to X \quad \text{für alle } i \in I,
+    \]
+    koinduziert die \emph{disjunkte Vereinigungstopologie} auf $X$. In dieser Topologie gilt:
+    \[
+    f = (f_i)_{i \in I}: \bigcup_{i \in I} X_i \to Z \text{ ist stetig} \iff \forall i \in I: f_i: X_i \to Z \text{ ist stetig.}
+    \]
+\end{enumerate}
+\end{example}
+
+\begin{theorem}[Tychonoff]
+Sei $(K_i)_{i \in I}$ eine Familie kompakter topologischer Räume. Dann ist das Produkt
+\[
+\prod_{i \in I} K_i
+\]
+mit der Produkttopologie kompakt. \\
+Mit dem Tychonoff-Satz können wir zeigen, dass Kompaktheit im Allgemeinen nicht Folgenkompaktheit impliziert. Ein Beispiel ist das Produkt unendlich vieler kompakter Räume, das zwar kompakt, aber nicht folgenkompakt ist.
+\end{theorem}
+
+\begin{definition}[Verfeinerung von Grenzproblemen]
+Seien $(D, f)$ und $(D', f')$ Grenzprobleme in $X$. Wir sagen, dass $(D', f')$ \emph{eine Verfeinerung} von $(D, f)$ ist, falls es eine stetige Abbildung 
+\[
+\alpha: D' \to D
+\]
+gibt mit den Eigenschaften:
+\begin{itemize}
+    \item $\alpha(\infty) = \infty$,
+    \item $\alpha(D' \setminus \{\infty\}) \subset D \setminus \{\infty\}$,
+    \item $f' = f \circ \alpha$.
+\end{itemize}
+
+Bemerkung: Teilfolgen liefern Verfeinerungen der zugehörigen Grenzprobleme.
+\end{definition}
+
+\begin{theorem}[Häufungspunkte und Verfeinerungen]
+Für ein Grenzproblem $(D, f)$ in $X$ und $a \in X$ sind folgende Aussagen äquivalent:
+\begin{enumerate}
+    \item $a$ ist ein Häufungspunkt von $(D, f)$.
+    \item $a$ ist ein Grenzwert einer Verfeinerung von $(D, f)$.
+    \item $a$ ist ein Grenzwert von $(D, f)$ in einer eventuell feineren Topologie, für die $D \setminus \{\infty\} \subset D$ immer noch dicht ist.
+\end{enumerate}
+\end{theorem}
+
+Wir wollen der Frage nachgehen, wann ein topologischer Raum metrisierbar ist, das heißt, ob $(X, \tau) = (X, \tau_d)$ für eine Metrik $d$ gilt.
+
+\subsection{Trennungsaxiome}
+Sei $(M, d)$ ein metrischer Raum und $A \subset M$. Dann ist die Abbildung
+\[
+d_A: M \to \mathbb{R}, \quad x \mapsto \inf_{a \in A} d(a, x)
+\]
+eine stetige Funktion mit der Eigenschaft:
+\[
+d_A(x) = 0 \iff x \in \overline{A}.
+\]
+
+\begin{lemma}[Metrische Räume und Trennungseigenschaften]
+In einem metrischen Raum $(M, d)$ gilt:
+\begin{enumerate}
+    \item Sei $A \subset M$ abgeschlossen. Dann existiert eine stetige Funktion $f: M \to [0, \infty)$ mit 
+    \[
+    f^{-1}(\{0\}) = A.
+    \]
+    
+    \item Sind $A, B \subset M$ abgeschlossen mit $A \cap B = \emptyset$, so existiert eine stetige Funktion $f: M \to [0,1]$ mit
+    \[
+    f^{-1}(\{0\}) = A \quad \text{und} \quad f^{-1}(\{1\}) = B.
+    \]
+
+    \item Für alle abgeschlossenen Mengen $A, B \subset M$ mit $A \cap B = \emptyset$ existieren offene Mengen $U, V \subset M$ mit
+    \[
+    A \subset U, \quad B \subset V, \quad \text{und} \quad U \cap V = \emptyset.
+    \]
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}[Urysohns Lemma]
+Für einen topologischen Raum $X$ sind die folgenden Aussagen äquivalent:
+\begin{enumerate}
+    \item Für alle abgeschlossenen Mengen $A, B \subset X$ mit $A \cap B = \emptyset$ existieren offene Mengen $U, V \subset X$ mit 
+    \[
+    A \subset U, \quad B \subset V, \quad \text{und} \quad U \cap V = \emptyset.
+    \]
+    
+    \item Für alle abgeschlossenen Mengen $A, B \subset X$ mit $A \cap B = \emptyset$ existiert eine stetige Funktion $f: X \to [0,1]$ mit 
+    \[
+    f|_A = 0, \quad f|_B = 1.
+    \]
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}[Trennungsaxiome]
+Sei $(X, \tau)$ ein topologischer Raum. Dann nennt man $(X, \tau)$:
+\begin{itemize}
+    \item ein \emph{$T_0$-Raum}, falls für alle $p, y \in X$ mit $p \neq y$ eine offene Umgebung $U_p$ von $p$ existiert mit $y \notin U_p$ oder eine offene Umgebung $U_y$ von $y$ mit $p \notin U_y$.
+    
+    \item ein \emph{$T_1$-Raum}, falls für alle $p, y \in X$ mit $p \neq y$ offene Umgebungen $U_p, U_y$ existieren mit $p \in U_p$, $y \notin U_p$ und umgekehrt $y \in U_y$, $p \notin U_y$.
+    
+    \item ein \emph{$T_2$-Raum} (Hausdorff-Raum), falls für alle $p, y \in X$ mit $p \neq y$ offene Mengen $U_p, U_y$ existieren mit $p \in U_p$, $y \in U_y$ und $U_p \cap U_y = \emptyset$.
+    
+    \item ein \emph{$T_3$-Raum} oder \emph{regulär}, falls $X$ ein $T_1$-Raum ist und für alle $p \in X$ und jede abgeschlossene Teilmenge $A \subset X$ mit $p \notin A$ offene Mengen $U, V \subset X$ existieren mit 
+    \[
+    p \in U, \quad A \subset V, \quad \text{und} \quad U \cap V = \emptyset.
+    \]
+
+    \item ein \emph{$T_{3\frac{1}{2}}$-Raum} oder \emph{vollständig regulär}, falls $X$ ein $T_1$-Raum ist und für alle $p \in X$ und alle abgeschlossenen Teilmengen $A \subset X$ mit $p \notin A$ eine stetige Funktion 
+    \[
+    f: X \to [0,1]
+    \]
+    existiert mit $f(p) = 0$ und $f|_A = 1$.
+
+    \item ein \emph{$T_4$-Raum}, falls $X$ ein $T_1$-Raum ist und die Eigenschaft (1) aus Lemma 2.54 gilt.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Urysohns Metrisierbarkeitssatz]
+Sei $(X, \tau)$ ein topologischer Raum. Falls $X$ die folgenden Eigenschaften erfüllt:
+\begin{enumerate}
+    \item $X$ ist ein $T_2$-Raum (Hausdorff-Raum),
+    \item $X$ ist normal,
+    \item $X$ erfüllt das \emph{zweite Abzählbarkeitsaxiom}, d.h. es existiert eine abzählbare Menge $S \subset \tau$, sodass jedes $O \in \tau$ als Vereinigung von Mengen $S_i \in S$ für $i \in \mathbb{N}$ geschrieben werden kann,
+\end{enumerate}
+dann ist $X$ metrisierbar, d.h. es existiert eine Metrik $d$ auf $X$, sodass $\tau = \tau_d$.
+\end{theorem}
+
+\begin{definition}[Topologische Mannigfaltigkeit]
+Sei $n \in \mathbb{N}_0$. Ein topologischer Raum $(M, \tau)$ heißt \emph{$n$-dimensionale Mannigfaltigkeit}, falls $M$ die folgenden Bedingungen erfüllt:
+\begin{enumerate}
+    \item $M$ ist ein $T_2$-Raum (Hausdorff-Raum).
+    \item $M$ erfüllt das \emph{zweite Abzählbarkeitsaxiom}, d.h. es existiert eine abzählbare Menge $S \subset \tau$, sodass jede offene Menge in $M$ als Vereinigung von Mengen aus $S$ geschrieben werden kann.
+    \item $M$ ist lokal homöomorph zu $\mathbb{R}^n$, d.h. zu jedem $x \in M$ existiert eine offene Umgebung $U \subset M$, eine offene Menge $\hat{U} \subset \mathbb{R}^n$ und ein Homöomorphismus 
+    \[
+    \varphi: U \to \hat{U}.
+    \]
+\end{enumerate}
+\textbf{Bemerkungen:}
+\begin{enumerate}
+    \item Keine der drei Eigenschaften folgt aus den beiden anderen.
+    \item Mannigfaltigkeiten sind normal und damit metrisierbar.
+    \item Der Satz über die Invarianz der Dimension stellt sicher, dass im Fall $M \neq \emptyset$ die Dimension wohldefiniert ist.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\begin{enumerate}
+    Beispiele für n-dimensionale Mannigfaltigkeiten sind:
+    \item Die leere Menge $\emptyset$ mit der eindeutigen Topologie ist eine $n$-dimensionale Mannigfaltigkeit für jedes $n \in \mathbb{N}$.
+    
+    \item Jede offene Teilmenge $U \subset \mathbb{R}^n$ ist eine $n$-dimensionale Mannigfaltigkeit, denn:
+    \begin{itemize}
+        \item $U$ als Teilraum von $\mathbb{R}^n$ ist ein $T_2$-Raum.
+        \item $U$ erfüllt das zweite Abzählbarkeitsaxiom, da $\mathbb{R}^n$ es erfüllt und $U$ eine Teilmenge davon ist.
+        \item Die Identitätsabbildung liefert einen Homöomorphismus $\operatorname{id}: U \to U$.
+    \end{itemize}
+
+    \item Die $n$-Sphäre $S^n = \{x \in \mathbb{R}^{n+1} \mid \|x\| = 1\}$ ist eine $n$-dimensionale Mannigfaltigkeit. Sie ist $T_2$-Raum und erfüllt das zweite Abzählbarkeitsaxiom. Die Sphäre ist lokal homöomorph zu $\mathbb{R}^n$ mittels der \emph{stereographischen Projektion}.
+    
+    \item Definiere für $V, W \in \mathbb{R}^{n+1} \setminus \{0\}$ die Äquivalenzrelation
+    \[
+    W \sim V \quad \iff \quad V = \lambda W \text{ für ein } \lambda \in \mathbb{R} \setminus \{0\}.
+    \]
+    Schreibe $\mathbb{R}P^n$ für die Menge der Äquivalenzklassen $\mathbb{R}^{n+1} \setminus \{0\} / \sim$ mit der Quotiententopologie, die durch die kanonische Projektion induziert wird. Dieser Raum heißt der \emph{$n$-dimensionale reelle projektive Raum} und ist eine $n$-dimensionale Mannigfaltigkeit.
+\end{enumerate}
+\end{example}
 
 \end{document}
