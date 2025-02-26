@@ -2934,6 +2934,7 @@ Sei $n \in \mathbb{N}_0$. Ein topologischer Raum $(M, \tau)$ heißt \emph{$n$-di
 \end{example}
 
 \section{Kurven und Flächen}
+\subsection{Krümmung und ebene Kurven}
 
 \begin{definition}[Glatte Kurve]
 Sei \( I \subseteq \mathbb{R} \) ein offenes Intervall.  
@@ -3083,5 +3084,129 @@ R_{\gamma}(t) = R(t) \quad \text{für alle } t \in I.
 \]
 \end{theorem}
 
+\begin{definition}[Drehwinkelfunktion]
+Sei \( \gamma: I \to \mathbb{R}^2 \) eine nach Bogenlänge parametrisierte Kurve.  
+Eine Abbildung \( \theta: I \to \mathbb{R} \) heißt \emph{Drehwinkelfunktion} von \( \gamma' \), falls gilt:  
+\[
+\gamma'(t) = \begin{pmatrix} \cos(\theta(t)) \\ \sin(\theta(t)) \end{pmatrix}
+\quad \text{für alle } t \in I.
+\]
+\end{definition}
+
+\textbf{Bemerkung:}
+Drehwinkelfunktionen sind nicht eindeutig.  
+Ist \( \theta: I \to \mathbb{R} \) eine Drehwinkelfunktion zu einer nach Bogenlänge parametrierten Kurve  
+\( \gamma: I \to \mathbb{R}^2 \), so ist für jedes \( k \in \mathbb{Z} \) auch  
+\[
+\theta'(t) = \theta(t) + 2\pi k
+\]
+eine Drehwinkelfunktion von \( \gamma' \).
+
+\begin{lemma}[Krümmung ist eine Drehwinkelfunktion]
+Sei \( \gamma: [a,b] \to \mathbb{R}^2 \) eine nach Bogenlänge parametrisierte Kurve mit Krümmung  
+\[
+R_{\gamma}: [a,b] \to \mathbb{R}
+\]
+und sei \( \theta_0 \in \mathbb{R} \) mit  
+\[
+\gamma'(a) = \begin{pmatrix} \cos(\theta_0) \\ \sin(\theta_0) \end{pmatrix}.
+\]
+Dann ist die Funktion  
+\[
+\theta: [a,b] \to \mathbb{R}, \quad t \mapsto \theta_0 + \int_a^t R_{\gamma}(s) \, ds
+\]
+eine glatte Drehwinkelfunktion von \( \gamma' \).
+\end{lemma}
+
+\begin{definition}[Tangentendrehzahl]
+Sei \( \gamma: [a,b] \to \mathbb{R}^2 \) eine nach Bogenlänge parametrisierte Kurve mit  
+\[
+\gamma(a) = \gamma(b), \quad \gamma'(a) = \gamma'(b).
+\]
+Sei ferner \( \theta: [a,b] \to \mathbb{R} \) eine stetige Drehwinkelfunktion für \( \gamma' \).  
+Dann definiert man die \emph{Tangentendrehzahl} von \( \gamma \) als  
+\[
+n_{\gamma} := \frac{1}{2\pi} (\theta(b) - \theta(a)).
+\]
+Die Tangentendrehzahl ist stets ganzzahlig und wohldefiniert.
+\end{definition}
+
+\begin{lemma}[Krümmung und Tangentendrehzahl]
+Sei \( \gamma: [a,b] \to \mathbb{R}^2 \) eine nach Bogenlänge parametrisierte Kurve mit  
+\[
+\gamma(a) = \gamma(b), \quad \gamma'(a) = \gamma'(b).
+\]
+Dann gilt:  
+\[
+\frac{1}{2\pi} \int_a^b R_{\gamma}(t) \, dt = n_{\gamma}.
+\]
+\end{lemma}
+
+\begin{definition}[Einfach geschlossene Kurve]
+Eine nach Bogenlänge parametrisierte Kurve \( \hat{c}: \mathbb{R} \to \mathbb{R}^2 \) heißt \emph{einfach geschlossen},  
+falls eine positive Zahl \( L \) existiert mit  
+\[
+\hat{c}(t + L) = \hat{c}(t) \quad \text{für alle } t \in \mathbb{R}
+\]
+und \( \hat{c} \mid_{(0,L)} \) injektiv ist.  
+Man nennt \( L \) die \emph{Periode} von \( \hat{c} \). Es gilt  
+\[
+c(0) = \hat{c}(L) \quad \text{und allgemeiner} \quad c^{(k)}(0) = c^{(k)}(L) \quad \text{für alle } k \in \mathbb{N}.
+\]
+Ist umgekehrt \( c: [a,a+L] \to \mathbb{R}^2 \) eine nach Bogenlänge parametrisierte Kurve mit  
+\[
+c^{(k)}(a) = c^{(k)}(a+L) \quad \text{für alle } k \in \mathbb{N}_0
+\]
+und \( c \mid_{[a,a+L]} \) injektiv, so existiert eine einfach geschlossene Kurve \( \hat{c}: \mathbb{R} \to \mathbb{R}^2 \) mit  
+\[
+\hat{c} \mid_{[a,a+L]} = c.
+\]
+Man nennt \( c \) ebenfalls einfach geschlossen.
+\end{definition}
+
+\begin{lemma}[Stetige Drehwinkelfunktion]
+Sei \( \gamma: [a,b] \to \mathbb{R}^2 \) mit \( \gamma(t) \in S^1 \) für alle \( t \in [a,b] \) stetig.  
+Dann existiert eine stetige Funktion \( \theta: [a,b] \to \mathbb{R} \) mit  
+\[
+\gamma(t) = \begin{pmatrix} \cos(\theta(t)) \\ \sin(\theta(t)) \end{pmatrix}
+\quad \text{für alle } t \in [a,b].
+\]
+Darüber hinaus ist \( \theta \) eindeutig bestimmt bis auf eine additive Konstante \( 2\pi k \) mit \( k \in \mathbb{Z} \).
+\end{lemma}
+
+\begin{lemma}[Liftungslemma]
+Sei \( X \subseteq \mathbb{R}^n \) sternförmig bezüglich \( x_0 \in X \) und \( \gamma: X \to S^1 \) stetig.  
+Dann existiert eine stetige Abbildung \( \theta: X \to \mathbb{R} \) sodass  
+\[
+\gamma(x) = \begin{pmatrix} \cos(\theta(x)) \\ \sin(\theta(x)) \end{pmatrix}
+\quad \text{für alle } x \in X.
+\]
+Jede weitere Funktion \( \tilde{\theta} \) erfüllt  
+\[
+\tilde{\theta} = \theta + 2\pi k \quad \text{für ein } k \in \mathbb{Z}.
+\]
+\end{lemma}
+
+\begin{theorem}[Umlaufsatz, Hopf 1935]
+Sei \( \gamma: [0,L] \to \mathbb{R}^2 \) eine nach Bogenlänge parametrisierte einfach geschlossene Kurve.  
+Dann gilt:
+\[
+n_{\gamma} \in \{ \pm 1 \}.
+\]
+\end{theorem}
+
+\begin{definition}[Konvexe Kurve]
+Eine reguläre Kurve \( \gamma: I \to \mathbb{R}^2 \) heißt \emph{konvex}, wenn für alle \( t_0 \in I \) die Funktion  
+\[
+d_{\gamma,t_0} : I \to \mathbb{R}, \quad t \mapsto \langle \gamma(t) - \gamma(t_0), J \cdot \gamma'(t_0) \rangle
+\]
+ihr Vorzeichen nicht ändert, wobei  
+\[
+J = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}
+\]
+die Drehmatrix um \( 90^\circ \) ist.
+\end{definition}
+
+\subsection{Raumkurven}
 
 \end{document}
