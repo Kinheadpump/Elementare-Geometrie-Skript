@@ -3209,4 +3209,196 @@ die Drehmatrix um \( 90^\circ \) ist.
 
 \subsection{Raumkurven}
 
+\begin{definition}[Krümmung von Raumkurven]
+Sei \( \gamma: I \to \mathbb{R}^3 \) eine nach Bogenlänge parametrisierte Raumkurve.  
+Dann ist die \emph{Krümmung} \( R_{\gamma} \) von \( \gamma \) definiert durch  
+\[
+R_{\gamma}: I \to \mathbb{R}, \quad t \mapsto \|\gamma''(t)\|.
+\]
+\end{definition}
+
+\begin{definition}[Frenet-Dreibein]
+Sei \( \gamma: I \to \mathbb{R}^3 \) eine nach Bogenlänge parametrisierte Raumkurve und sei \( t_0 \in I \) mit \( R_{\gamma}(t_0) > 0 \).  
+Dann definieren wir die folgenden Vektoren:  
+\begin{itemize}
+    \item Der \emph{Tangentialvektor} ist \( v(t_0) := \gamma'(t_0) \).
+    \item Der \emph{Normalenvektor} ist  
+    \[
+    n(t_0) := \frac{\gamma''(t_0)}{\|\gamma''(t_0)\|}.
+    \]
+    \item Der \emph{Binormalenvektor} ist  
+    \[
+    b(t_0) := v(t_0) \times n(t_0).
+    \]
+\end{itemize}
+Da \( \gamma \) nach Bogenlänge parametrisiert ist, gilt \( v(t_0) \perp n(t_0) \).  
+Nach Definition des Kreuzprodukts folgt zudem \( v(t_0) \perp b(t_0) \) und \( n(t_0) \perp b(t_0) \).  
+Damit ist das Tripel \( (v(t_0), n(t_0), b(t_0)) \) eine \emph{Orthonormalbasis} von \( \mathbb{R}^3 \), die als \emph{Frenet-Dreibein} bezeichnet wird.  
+
+Die Größe  
+\[
+T_{\gamma}(t_0) := \langle n'(t_0), b(t_0) \rangle
+\]
+heißt \emph{Torsion} zur Zeit \( t_0 \).
+\end{definition}
+
+\begin{theorem}[Frenet-Gleichungen in 3D]
+Sei \( \gamma: I \to \mathbb{R}^3 \) eine nach Bogenlänge parametrisierte Kurve mit \( R_{\gamma}(t) > 0 \) für alle \( t \in I \).  
+Dann gilt für das Frenet-Dreibein \( (v(t), n(t), b(t)) \):  
+\[
+\begin{aligned}
+    v'(t) &= R_{\gamma}(t) \cdot n(t), \\
+    n'(t) &= -R_{\gamma}(t) \cdot v(t) + T_{\gamma}(t) \cdot b(t), \\
+    b'(t) &= -T_{\gamma}(t) \cdot n(t).
+\end{aligned}
+\]
+\end{theorem}
+
+\begin{lemma}[Großkreise sind kürzeste Wege in \( S^2 \)]
+Seien \( v, w \in S^2 \) und sei \( \gamma: [a,b] \to S^2 \) eine differenzierbare Kurve mit  
+\[
+\gamma(a) = v, \quad \gamma(b) = w.
+\]
+Dann gilt für die Länge von \( \gamma \):  
+\[
+L(\gamma) \geq \angle(v,w).
+\]
+Gleichheit tritt genau dann ein, wenn \( \gamma \) einen Großkreisbogen zwischen \( v \) und \( w \) in monotoner Weise durchläuft.
+\end{lemma}
+
+\begin{corollary}[Sphärische Kurven und Hemisphären]
+Sei \( \gamma: [0,L] \to S^2 \) eine geschlossene Kurve mit  
+\[
+L(\gamma) < 2\pi.
+\]
+Dann existiert ein Punkt \( q \in S^2 \), sodass  
+\[
+\langle \gamma(t), q \rangle > 0 \quad \forall t \in [0,L].
+\]
+\end{corollary}
+
+\begin{theorem}[Fenchel 1929]
+Sei \( \hat{\gamma}: \mathbb{R} \to \mathbb{R}^3 \) eine nach Bogenlänge parametrisierte periodische Kurve mit Periode \( L > 0 \).  
+Setze \( \gamma := \hat{\gamma} \mid_{[0,L]} \). Dann gilt:  
+\[
+\int_0^L R_{\gamma}(t) \, dt \geq 2\pi.
+\]
+Gleichheit tritt genau dann ein, wenn \( \gamma \) eine konvexe ebene Kurve ist.
+\end{theorem}
+
+\subsection{Flächen}
+
+\begin{definition}[Immersion]
+Sei \( U \subseteq \mathbb{R}^n \) offen. Eine differenzierbare Abbildung  
+\[
+f: U \to \mathbb{R}^{n+k}, \quad u \mapsto (f_1(u), \dots, f_{n+k}(u)), \quad k \in \mathbb{N}_0,
+\]
+heißt \emph{Immersion}, falls für alle \( u \in U \) das Differential  
+\[
+Df_u: \mathbb{R}^n \to \mathbb{R}^{n+k}
+\]
+injektiv ist.  
+
+Wir identifizieren \( Df_u \) mit der Jacobi-Matrix \( Jf_u \) von \( f \) im Punkt \( u \in U \), also  
+\[
+Jf_u =
+\begin{pmatrix}
+\frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} & \dots & \frac{\partial f_1}{\partial x_n} \\
+\frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} & \dots & \frac{\partial f_2}{\partial x_n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial f_{n+k}}{\partial x_1} & \frac{\partial f_{n+k}}{\partial x_2} & \dots & \frac{\partial f_{n+k}}{\partial x_n}
+\end{pmatrix}.
+\]
+Wir schreiben auch  
+\[
+Df_u = \left( \frac{\partial f}{\partial x_1}, \dots, \frac{\partial f}{\partial x_n} \right).
+\]
+\end{definition}
+
+\begin{definition}[Parametrisiertes Flächenstück]
+Sei \( U \subseteq \mathbb{R}^2 \) offen.  
+Eine Immersion  
+\[
+f: U \to \mathbb{R}^3
+\]
+heißt \emph{parametrisiertes Flächenstück}.  
+
+Falls zusätzlich \( f: U \to f(U) \) ein Homöomorphismus ist, so heißt \( f \) ein \emph{eingebettetes Flächenstück}.
+\end{definition}
+
+\begin{theorem}[Parametrisierte Flächenstücke behalten Eingebettetheit lokal]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und sei  
+\[
+f: U \to \mathbb{R}^3
+\]
+ein parametrisiertes Flächenstück.  
+
+Dann existiert für jedes \( u_0 \in U \) ein \( \varepsilon(u_0) > 0 \), sodass die Umgebung  
+\[
+B_{\varepsilon}(u_0) := \{ u \in U \mid \| u - u_0 \| < \varepsilon \} \subseteq U
+\]
+ganz in \( U \) liegt und die Einschränkung  
+\[
+f \mid_{B_{\varepsilon}(u_0)}: B_{\varepsilon}(u_0) \to \mathbb{R}^3
+\]
+ein eingebettetes Flächenstück ist.
+\end{theorem}
+
+\begin{definition}[Tangentialebene]
+    Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisertes Flächenstück. 
+    Für \( u_0 \in U \) heißt die Menge 
+    \[
+        T_{u_0} f := \operatorname{Bild} Df_{u_0} = \operatorname{Spann} \{ f_x(u_0), f_y(u_0) \}
+    \]
+    die \emph{Tangentialebene} von \( f \) in \( u_0 \).
+    Die Elemente
+    \[
+        Df_{u_0} 
+        \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} 
+        = v_1 f_x(u_0) + v_2 f_y(u_0)
+    \]
+    heißen \emph{Tangentialvektoren}.
+\end{definition}
+
+\begin{definition}[Gaußabbildung]
+    Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisertes Flächenstück. 
+    Dann heißt die Abbildung
+    \[
+        N: U \to S^2, \quad u \mapsto \frac{f_x(u) \times f_y(u)}{\| f_x(u) \times f_y(u) \|}
+    \]
+    die \emph{Gaußabbildung} von \( f \).
+\end{definition}
+
+\begin{definition}[Parametertransformation]
+    Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisertes Flächenstück. 
+    Eine \emph{Parametertransformation} von \( f \) ist ein Diffeomorphismus 
+    \[
+        \phi: V \to U, \quad V \subseteq \mathbb{R}^2 \text{ offen}.
+    \]
+    Man sagt, dass 
+    \[
+        \tilde{f}: V \to \mathbb{R}^3, \quad v \mapsto f(\phi(v))
+    \]
+    eine \emph{Umparametrisierung} von \( f \) ist.
+    
+    Gilt \( \det D\phi(v) > 0 \) (bzw. \( < 0 \)) für alle \( v \in V \), so heißt \( \phi \) \emph{orientierungserhaltend} (bzw. \emph{orientierungsumkehrend}).
+\end{definition}
+
+\begin{lemma}
+    Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisertes Flächenstück.
+    Sei weiter \( \phi: V \to U \) eine Parametertransformation. Dann gilt:
+    \[
+        \tilde{f}: V \to \mathbb{R}^3, \quad v \mapsto f(\phi(v))
+    \]
+    ist ebenfalls ein parametrisertes Flächenstück mit 
+    \[
+        \operatorname{Bild}(f) = \operatorname{Bild}(\tilde{f})
+    \]
+    und 
+    \[
+        T_v(\tilde{f}) = T_{\phi(v)} f \quad \text{für alle } v \in V.
+    \]
+\end{lemma}
+
+
 \end{document}
