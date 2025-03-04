@@ -3400,5 +3400,145 @@ ein eingebettetes Flächenstück ist.
     \]
 \end{lemma}
 
+\begin{lemma}[Transformationsregel für die Gaußabbildung]
+Sei $U \subset \mathbb{R}^3$ offen, $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück und $\varphi: V \to U$ eine Parametrisierungstransformation. Sei weiter 
+\[
+\overline{f}: V \to \mathbb{R}^3, \quad v \mapsto f(\varphi(v))
+\]
+die durch $\varphi$ transformierte Parametrisierung. Bezeichne mit $N$ bzw. $\overline{N}$ die Gaußabbildung bezüglich $f$ bzw. $\overline{f}$. Dann gilt:
+\[
+\overline{N}(v) = \operatorname{sign}(\det D\varphi_v) \cdot N(\varphi(v)).
+\]
+\end{lemma}
+
+\begin{definition}[Reguläre Fläche]
+Eine Teilmenge $M^2 \subset \mathbb{R}^3$ heißt \emph{reguläre Fläche}, falls für jeden Punkt $p \in M^2$ eine offene Umgebung $V_p^3 \subset \mathbb{R}^3$ von $p$ und eine Einbettung 
+\[
+f: U_p \to \mathbb{R}^3, \quad U_p \subset \mathbb{R}^2 \text{ offen}
+\]
+existieren, sodass gilt:
+\[
+M^2 \cap V_p^3 = f(U_p).
+\]
+Dann nennt man $M^2 \cap V_p^3$ eine \emph{Koordinatenumgebung} von $p$, und der Tangentialraum von $M^2$ im Punkt $p$ ist definiert als:
+\[
+T_p M^2 := Df(T_{U_p}).
+\]
+\end{definition}
+
+\begin{theorem}[Satz vom regulären Wert]
+Sei $W \subset \mathbb{R}^3$ offen und $\gamma: W \to \mathbb{R}$ eine differenzierbare Funktion. Sei ferner $c \in \mathbb{R}$ und definiere die Niveaufläche
+\[
+M_c^2 := \{ (x,y,z) \in W \mid \gamma(x,y,z) = c \}.
+\]
+Falls für alle $p \in M_c^2$ die Bedingung
+\[
+\nabla \gamma(p) \neq 0
+\]
+gilt, dann ist $M_c^2$ eine reguläre Fläche.
+\end{theorem}
+
+\begin{lemma}[Gradient orthogonal zur Niveaufläche]
+Sei $\delta: \mathbb{R}^3 \to \mathbb{R}$ eine differenzierbare Funktion und 
+\[
+M_c^2 = \{ p \in \mathbb{R}^3 \mid \delta(p) = c \}
+\]
+eine reguläre Fläche. Dann gilt für alle $p \in M_c^2$, dass der Gradient von $\delta$ orthogonal zum Tangentialraum $T_p M_c^2$ ist, das heißt:
+\[
+\nabla \delta(p) \perp T_p M_c^2.
+\]
+\end{lemma}
+
+\begin{definition}[Erste Fundamentalform]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück. Für $i,j \in \{1,2\}$ nennt man die Funktion
+\[
+g_{ij}: U \to \mathbb{R}, \quad u \mapsto \langle f_{U_i}(u), f_{U_j}(u) \rangle
+\]
+die \emph{Koeffizienten der ersten Fundamentalform}. \\
+
+Bemerkungen:
+Da $f$ glatt ist, sind die Funktionen $g_{ij}$ in $C^\infty(U)$. Die Matrix 
+$(g_{ij})_{i,j}$
+ist symmetrisch und positiv definit.
+\end{definition}
+
+\begin{lemma}[Erste Fundamentalform und Bogenlänge]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück. Sei $\gamma: I \to U$ eine glatte Kurve. Dann gilt für die durch $f$ parametrisierte Raumkurve 
+\[
+c: I \to \mathbb{R}^3, \quad t \mapsto f(\gamma(t)),
+\]
+dass ihre Bogenlänge durch die erste Fundamentalform gegeben ist:
+\[
+L(c) = \int_I \left( \sum_{1 \leq i,j \leq 2} \gamma_i'(t) \gamma_j'(t) g_{ij}(\gamma(t)) \right)^{\frac{1}{2}} dt.
+\]
+\end{lemma}
+
+\begin{definition}[Flächeninhalt]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück. Der \emph{Flächeninhalt} von $f$ ist definiert durch
+\[
+A(f) = \int_U \sqrt{\det (g_{ij}(u))} \, du \in [0, \infty],
+\]
+wobei $(g_{ij})$ die Koeffizienten der ersten Fundamentalform von $f$ sind.
+\end{definition}
+
+Wir wollen die Gaußabbildung etwas genauer betrachten. Dazu benötigen wir folgendes Lemma:
+
+\begin{lemma}
+Sei $U \subset \mathbb{R}^2$ offen und seien $X, Y: U \to \mathbb{R}^3$ glatte Abbildungen. Dann ist die Funktion
+\[
+f: U \to \mathbb{R}, \quad u \mapsto \langle X(u), Y(u) \rangle
+\]
+glatt, und es gilt für die partiellen Ableitungen:
+\[
+\frac{\partial f}{\partial u_i} (u) = \langle X(u), \frac{\partial Y}{\partial u_i} (u) \rangle + \langle \frac{\partial X}{\partial u_i} (u), Y(u) \rangle.
+\]
+\end{lemma}
+
+\begin{corollary}
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ eine Parametrisierung einer Fläche. Dann gilt für alle $u \in U$:
+\[
+\operatorname{Bild}(D N_u) \subset \operatorname{Bild}(D f_u) = T_u f.
+\]
+\end{corollary}
+
+\begin{definition}[Weingarten-Abbildung]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück. Sei  
+\[
+N: U \to S^2
+\]
+die zugehörige Gaußabbildung. Dann heißt der Endomorphismus  
+\[
+L_u := - D N_u \circ (D f_u)^{-1}: T_u f \to T_u f
+\]
+die \emph{Weingarten-Abbildung} von $f$ im Punkt $u \in U$.
+
+Dabei ist  
+\[
+(D f_u)^{-1}: T_u f \to \mathbb{R}^2
+\]
+die Umkehrabbildung des Vektorraum-Isomorphismus  
+\[
+D f_u: \mathbb{R}^2 \to T_u f.
+\]
+Da gilt  
+\[
+D f_u(e_i) = f_{u_i},
+\]
+folgt für die Inverse:  
+\[
+(D f_u)^{-1}(f_{u_i}) = e_i.
+\]
+Daraus ergibt sich die Darstellung:
+\[
+L_u (f_{u_i}) = D N_u \circ (D f_u)^{-1} (f_{u_i}) = D N_u (e_i).
+\]
+\end{definition}
+
+\begin{lemma}
+Die Weingarten-Abbildung $L_u: T_u f \to T_u f$ ist ein selbstadjungierter Endomorphismus bezüglich der Metrik $g_u$ auf $T_u f$. Das bedeutet, dass für alle $v, w \in T_u f$ gilt:
+\[
+g_u(L_u v, w) = g_u(v, L_u w).
+\]
+\end{lemma}
 
 \end{document}
