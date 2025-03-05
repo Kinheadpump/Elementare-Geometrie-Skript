@@ -3541,4 +3541,82 @@ g_u(L_u v, w) = g_u(v, L_u w).
 \]
 \end{lemma}
 
+\begin{definition}[Zweite Fundamentalform]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück. Die \emph{zweite Fundamentalform} von $f$ im Punkt $u \in U$ ist die symmetrische Bilinearform  
+\[
+h_u: T_u f \times T_u f \to \mathbb{R}, \quad (v,w) \mapsto g_u(L_u v, w),
+\]
+wobei $g_u$ die durch die erste Fundamentalform gegebene Metrik auf $T_u f$ und $L_u$ die Weingarten-Abbildung ist.
+\end{definition}
+
+\begin{lemma}[Formel für die zweite Fundamentalform]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück. Dann gilt für alle $u \in U$:
+\[
+h_{ij}(u) = \langle N(u), \frac{\partial^2 f}{\partial u_i \partial u_j} (u) \rangle.
+\]
+\end{lemma}
+
+\begin{lemma}[Darstellende Matrix von $L_u$]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück. Dann gilt für die darstellende Matrix von $L_u$ bezüglich der Basis $\{f_{u_1}, f_{u_2}\}$:
+\[
+M_{f_{u_1}, f_{u_2}}(L) = (g_{ij})^{-1} (h_{ij}),
+\]
+wobei $(g_{ij})$ die Matrix der ersten Fundamentalform und $(h_{ij})$ die Matrix der zweiten Fundamentalform ist. Explizit ergibt sich:
+\[
+(g_{ij})^{-1} =
+\frac{1}{g_{11} g_{22} - g_{12}^2}
+\begin{pmatrix}
+g_{22} & -g_{12} \\
+-g_{12} & g_{11}
+\end{pmatrix},
+\]
+sodass
+\[
+M_{f_{u_1}, f_{u_2}}(L) =
+\frac{1}{g_{11} g_{22} - g_{12}^2}
+\begin{pmatrix}
+g_{22} & -g_{12} \\
+-g_{12} & g_{11}
+\end{pmatrix}
+\begin{pmatrix}
+h_{11} & h_{12} \\
+h_{12} & h_{22}
+\end{pmatrix}.
+\]
+\end{lemma}
+
+\begin{definition}[Krümmungen einer Fläche]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück.  
+
+\begin{itemize}
+    \item Die Eigenwerte $R_1(u)$ und $R_2(u)$ der Weingarten-Abbildung $L_u$ heißen die \emph{Hauptkrümmungen} von $f$ im Punkt $u$.
+    \item Die zugehörigen Eigenvektoren der Länge $1$ heißen die \emph{Hauptkrümmungsrichtungen} von $f$ im Punkt $u$.
+    \item Die Größe 
+    \[
+    K(u) = \det L_u = R_1(u) \cdot R_2(u)
+    \]
+    heißt die \emph{Gaußkrümmung} von $f$ im Punkt $u$.
+    \item Die Größe 
+    \[
+    H(u) = \frac{1}{2} \operatorname{spur}(L_u) = \frac{R_1(u) + R_2(u)}{2}
+    \]
+    heißt die \emph{mittlere Krümmung} von $f$ im Punkt $u$.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}[Formeln für $K$ und $H$]
+Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisierbares Flächenstück. Sei $(g_{ij})$ die Matrix der ersten Fundamentalform und $(h_{ij})$ die Matrix der zweiten Fundamentalform. Dann gelten die folgenden Formeln für die Krümmungen:
+
+\begin{enumerate}
+    \item Die \emph{Gaußkrümmung} ist gegeben durch:
+    \[
+    K = \frac{\det (h_{ij})}{\det (g_{ij})}.
+    \]
+    \item Die \emph{mittlere Krümmung} ist gegeben durch:
+    \[
+    H = \frac{h_{11} g_{22} - 2 h_{12} g_{12} + h_{22} g_{11}}{2 \det(g_{ij})}.
+    \]
+\end{enumerate}
+\end{lemma}
+
 \end{document}
