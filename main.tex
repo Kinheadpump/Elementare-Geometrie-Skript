@@ -3619,4 +3619,141 @@ Sei $U \subset \mathbb{R}^2$ offen und $f: U \to \mathbb{R}^3$ ein parametrisier
 \end{enumerate}
 \end{lemma}
 
+\begin{definition}[Normalenschnitte]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und sei \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück.  
+Für \( u_0 \in U \) und \( v \in T_{u_0} f \setminus \{0\} \) heißt eine Kurve  
+\[
+\gamma: [a,b] \to \operatorname{Bild}(f)
+\]
+ein \emph{Normalenschnitt}, falls gilt:
+\begin{itemize}
+    \item \( \gamma(t_0) = f(u_0) \) für ein \( t_0 \in (a,b) \),
+    \item \( \gamma(t) \in \gamma(t_0) + \operatorname{Span} \{N(u_0), v\} \) für alle \( t \in [a,b] \).
+\end{itemize}
+Ein Normalenschnitt kann als ebene Kurve aufgefasst werden.
+\end{definition}
+
+\begin{lemma}[Existenz von Normalenschnitten]
+Sei \( U \subseteq \mathbb{R}^2 \) offen, \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück,  
+\( u_0 \in U \) und \( v \in T_{u_0} f \setminus \{0\} \).  
+Dann existiert ein Normalenschnitt  
+\[
+\gamma: (-\varepsilon, \varepsilon) \to \mathbb{R}^3
+\]
+mit \( \gamma(0) = f(u_0) \) und \( \gamma'(0) = v \).
+\end{lemma}
+
+\begin{definition}[Normalenkrümmung]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück.  
+Sei \( c_v = f \circ \gamma: (-\varepsilon, \varepsilon) \to \mathbb{R}^3 \) ein nach Bogenlänge parametrisierter Normalenschnitt mit \( c_v'(0) = v \).  
+Dann heißt die Funktion  
+\[
+R_{\operatorname{nor}}(t) := \langle c_v''(t), N(\gamma(t)) \rangle
+\]
+die \emph{Normalenkrümmung} von \( c_v \) bezüglich des parametrisierten Flächenstücks \( f \).  
+
+Ist \( R_{c_v} \) die Krümmung der ebenen Kurve \( c_v \), so gilt:  
+\[
+R_{\operatorname{nor}} = |R_{c_v}|
+\]
+falls \( c_v \) zur Normalen \( N \) hingekrümmt ist, und  
+\[
+R_{\operatorname{nor}} = -|R_{c_v}|
+\]
+falls \( c_v \) von \( N \) weggekrümmt ist.
+\end{definition}
+
+\begin{proposition}[2. Fundamentalform geometrisch]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und sei \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück.  
+Sei \( u_0 \in U \) und \( v \in T_{u_0} f \) mit \( \|v\| = 1 \).  
+Sei  
+\[
+c_v = f \circ \gamma: (-\varepsilon, \varepsilon) \to \mathbb{R}^3
+\]
+ein nach Bogenlänge parametrisierter Normalenschnitt mit \( c_v(0) = f(u_0) \) und \( c_v'(0) = v \).  
+Dann gilt:  
+\[
+R_{\operatorname{nor}}(0) = h_{u_0}(v,v).
+\]
+\end{proposition}
+
+\begin{proposition}[Euler]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und sei \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück.  
+Für \( u \in U \) seien \( v_1(u), v_2(u) \) die Hauptkrümmungsrichtungen von \( f \) in \( U \).  
+Für \( \theta \in [0,2\pi) \) setze  
+\[
+v = \cos(\theta) v_1(u) + \sin(\theta) v_2(u).
+\]
+Dann ist die Normalenkrümmung von \( f \) in \( U \) in Richtung \( v \) durch die Eulersche Formel gegeben:  
+\[
+h_u(v,v) = \cos^2(\theta) R_1(u) + \sin^2(\theta) R_2(u).
+\]
+\end{proposition}
+
+Gilt \( R_2(u) \geq R_1(u) \), so folgt, dass alle Normalenkrümmungen durch \( R_2(u) \) und \( R_1(u) \) nach oben bzw. nach unten beschränkt sind.  
+
+Falls \( R_2(u) > R_1(u) \), so wird die \emph{Maximalkrümmung} genau in Richtung \( v = \pm v_2(u) \) und die \emph{Minimalkrümmung} genau in Richtung \( v = v_1(u) \) angenommen.  
+
+Falls hingegen \( R_2(u) = R_1(u) \), so sind alle Normalenkrümmungen gleich.  
+
+Wir wollen die Lage eines parametrisierten Flächenstücks relativ zur affinen Tangentialebene  
+\[
+f(u_0) + T_{u_0} f
+\]
+beschreiben. Dazu betrachten wir die Funktion  
+\[
+d_{f,u_0}: U \to \mathbb{R}, \quad u \mapsto \langle f(u) - f(u_0), N(u_0) \rangle.
+\]
+
+\begin{lemma}
+Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück. Sei \( u_0 \in U \). Dann gilt:  
+\begin{enumerate}
+    \item \( (\nabla d_{f,u_0})_{u_0} = 0 \),
+    \item Die Hesse-Matrix von \( d_{f,u_0} \) in \( u_0 \) ist gegeben durch  
+    \[
+    \operatorname{Hess}(d_{f,u_0})(u_0) = (h_{ij}(u_0))_{1 \leq i,j \leq 2}.
+    \]
+\end{enumerate}
+\end{lemma}
+
+\begin{corollary}[Krümmung und \( T_{u_0} f \)]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück.  
+Falls für \( u_0 \in U \) die Bildfläche \( \operatorname{Bild}(f) \) nahe \( f(u_0) \) ganz auf einer Seite von \( f(u_0) + T_{u_0} f \) liegt, so gilt  
+\[
+K(u_0) \geq 0.
+\]
+\end{corollary}
+
+\begin{lemma}[Krümmung und \( T_{u_0} f \), Teil 2]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück.  
+Falls \( R(u_0) > 0 \) für ein \( u_0 \in U \), so existiert ein \( \varepsilon > 0 \), sodass  
+\[
+B_{\varepsilon}(f(u_0)) \cap \operatorname{Bild}(f)
+\]
+ganz auf einer Seite von \( f(u_0) + T_{u_0} f \) liegt.
+\end{lemma}
+
+\begin{lemma}[Krümmung und \( T_{u_0} f \), Teil 3]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) eine parametrisierte Fläche.  
+Falls \( R(u_0) < 0 \) für ein \( u_0 \in U \) und seien \( v_1(u_0), v_2(u_0) \) die Hauptkrümmungsrichtungen,  
+dann liegen die zu \( v_1(u_0) \) und \( v_2(u_0) \) gehörenden Normalenschnitte auf zwei verschiedenen Seiten von \( f(u_0) + T_{u_0} f \).
+\end{lemma}
+
+\begin{theorem}[Tangentiale Sphäre]
+Sei \( U \subseteq \mathbb{R}^2 \) offen und \( f: U \to \mathbb{R}^3 \) ein parametrisiertes Flächenstück.  
+Falls die Funktion  
+\[
+g: U \to \mathbb{R}, \quad u \mapsto \| f(u) \|^2
+\]
+in \( u_0 \in U \) ein lokales Maximum annimmt, dann gilt  
+\[
+R(u_0) \geq \frac{1}{\| f(u_0) \|^2}.
+\]
+\end{theorem}
+
+\begin{corollary}[Kompakte reguläre Flächen haben Punkte positiver Krümmung]
+Auf jeder kompakten regulären Fläche \( M^2 \subseteq \mathbb{R}^3 \) existieren Punkte positiver Krümmung.
+\end{corollary}
+
+
 \end{document}
