@@ -3760,5 +3760,64 @@ R(u_0) \geq \frac{1}{\| f(u_0) \|^2}.
 Auf jeder kompakten regulären Fläche \( M^2 \subseteq \mathbb{R}^3 \) existieren Punkte positiver Krümmung.
 \end{corollary}
 
+\section{Anhang}
+\subsection{Axiome}
+\begin{itemize}
+    \item[\textbf{(I1)}] Für alle $A, B \in \Pi$ mit $A \neq B$ existiert genau eine Gerade $g \in \Gamma$, sodass $A, B \in g$. \\
+    Zwei verschiedene Punkte liegen immer auf genau einer Geraden.
+    \item[\textbf{(I2)}] Für alle $g \in \Gamma$ gilt $|g| \geq 2$. \\
+    Jede Gerade enthält mindestens zwei Punkte.
+    \item[\textbf{(I3)}] Es existieren $A, B, C \in \Pi$, die paarweise verschieden sind, sodass für alle $g \in \Gamma$ gilt: $\{A, B, C\} \nsubseteq g$. \\
+    Es existieren drei paarweise verschiedene Punkte, die nicht alle auf einer Geraden liegen.
+    \item[\textbf{(P)}] Für jeden Punkt $A\in\Pi$ und jede Gerade g existiert höchstens eine Gerade g', die A enthält und parallel zu g ist. 
+    \item[\textbf{(S1)}] Falls \((A, B, C) \in Z\):
+    \begin{itemize}
+        \item 1) Es existiert \(g \in \Gamma\) mit \(A, B, C \in g\).
+        \item 2) \((C, B, A) \in Z\) (oder auch \(C * B * A\)).
+    \end{itemize}
+    
+    \item[\textbf{(S2)}] Für alle \(A, B \in \Pi\), \(A \neq B\), existiert \(C \in \Pi\) mit \(A * B * C\).
+    
+    \item[\textbf{(S3)}] Für drei verschiedene Punkte auf einer Geraden gilt genau eine der folgenden drei Möglichkeiten:
+    \[
+    A * B * C, \quad B * C * A, \quad C * A * B.
+    \]
+    
+    \item[\textbf{(S4)}] (Pasch, 1882) \(A, B, C\) nicht kollinear (in keiner Linie enthalten) und \(g \in \Gamma\) mit \(A, B, C \notin g\) und \(D \in g\) sodass \(A * D * B\), impliziert:
+    \begin{itemize}
+        \item Entweder es existiert \(E_1 \in g\) mit \(A * E_1 * C\), oder
+        \item Es existiert \(E_2 \in g\) mit \(B * E_2 * C\).
+    \end{itemize}
+    \item[\textbf{(K1)}] Sei \(\overline{AB}\) eine Strecke und \(S\) ein Strahl mit Ursprung \(C \in \Pi\). Dann existiert genau ein \(D \in S\), sodass \(\overline{AB} \cong \overline{CD}\).
+    \item[\textbf{(K2)}] Es gilt:
+    \begin{itemize}
+        \item \(\overline{AB} \cong \overline{CD}\) und \(\overline{AB} \cong \overline{EF} \implies \overline{CD} \cong \overline{EF}\),
+        \item jedes Segment ist zu sich selbst kongruent.
+    \end{itemize}
+    \item[\textbf{(K3)}] Sind \(A, B, C\) paarweise verschieden mit \(A * B * C\) und \(D, E, F\) mit \(D * E * F\), so folgt:
+    \[
+    \overline{AB} \cong \overline{DE} \quad \text{und} \quad \overline{BC} \cong \overline{EF} \implies \overline{AC} \cong \overline{DF}.
+    \]
+    \item[\textbf{(K4)}]
+    Sei \(\angle BAC\) ein Winkel und \(\overrightarrow{\rm DF}\) ein Strahl. Dann existiert genau ein Strahl \(\overrightarrow{\rm DE}\) auf einer gegebenen Seite der Geraden durch \(D, F\), sodass 
+    \[
+    \angle BAC \cong_w \angle EDF.
+    \]
+    \item[\textbf{(K5)}]
+    Für drei Winkel \(\alpha\), \(\beta\), \(\gamma\) gilt:
+    \[
+    \alpha \cong_w \beta \quad \text{und} \quad \beta \cong_w \gamma \implies \alpha \cong_w \gamma,
+    \]
+    und jeder Winkel ist zu sich selbst kongruent.
+    \item[\textbf{(K6)}]
+    (Satz über Seite-Winkel-Seite, SWS) Seien Dreiecke \(\triangle ABC\) und \(\triangle DEF\) gegeben, mit
+    \[
+    \overline{AB} \cong \overline{DE}, \quad \overline{AC} \cong \overline{DF}, \quad \angle BAC \cong_w \angle EDF.
+    \]
+    Dann folgt:
+    \[
+    \overline{BC} \cong \overline{EF}, \quad \angle ACB \cong_w \angle DFE, \quad \angle CBA \cong_w \angle FED.
+    \]
+\end{itemize}
 
 \end{document}
